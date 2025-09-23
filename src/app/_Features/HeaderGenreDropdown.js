@@ -1,4 +1,4 @@
-export const Navbar1 = (props) => {
+export const HeaderGenreDropdown = (props) => {
   return (
     <div className="flex gap-[12px]">
       <button className="w-[97px] h-[36px] rounded-md border-1 g-[8px] bg-white flex gap-[8px] justify-center items-center">
@@ -7,10 +7,13 @@ export const Navbar1 = (props) => {
           Genre
         </button>
       </button>
-      <div className="w-[379px] h-[36px] flex g-[10px] rounded-md border-1 border-gray-200  items-center">
+      <div
+        className="w-[379px] h-[36px] flex gap-[10px] rounded-md border-1 border-gray-200  items-center"
+        style={{ paddingLeft: "5px" }}
+      >
         <img src="./logo2.png" className="w-[16px] h-[16px] " />
         <input
-          className="w-[54px] h-[36px] g-[10px]   text-black"
+          className="w-[350px] h-[36px] g-[10px] text-black"
           placeholder="Search.."
         />
       </div>
