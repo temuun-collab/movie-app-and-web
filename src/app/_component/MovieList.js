@@ -15,21 +15,30 @@ export const MovieList = (props) => {
       </div>
       <div className="flex flex-col gap-[30px]">
         <div className="flex w-[1277px] gap-[30px] ">
-          <MovieCard imgSrc="./slide1.png" title="Dear Santa" />
+          <MovieCard imgSrc="./slide1.png" title="Dear Santa" rating="7" />
           <MovieCard
             imgSrc="./slide2.png"
             title="How To Train Your Dragon Live Action"
+            rating="7"
           />
-          <MovieCard imgSrc="./slide3.png" title="Alien Romulus" />
-          <MovieCard imgSrc="./slide4.png" title="From the ashes" />
-          <MovieCard imgSrc="./slide5.png" title="Space dog " />
+          <MovieCard imgSrc="./slide3.png" title="Alien Romulus" rating="7" />
+          <MovieCard imgSrc="./slide4.png" title="From the ashes" rating="7" />
+          <MovieCard imgSrc="./slide5.png" title="Space dog " rating="7" />
         </div>
         <div className="flex w-[1277px] gap-[30px] ">
-          <MovieCard imgSrc="./slide6.png" title="The order" />
-          <MovieCard imgSrc="./slide7.png" title="Y2K" />
-          <MovieCard imgSrc="./slide8.png" title="Solo leveling ReAwakening" />
-          <MovieCard imgSrc="./slide9.png" title="Get Away" />
-          <MovieCard imgSrc="./slide10.png" title="Sonic the Hedgehog 3" />
+          <MovieCard imgSrc="./slide6.png" title="The order" rating="7" />
+          <MovieCard imgSrc="./slide7.png" title="Y2K" rating="7" />
+          <MovieCard
+            imgSrc="./slide8.png"
+            title="Solo leveling ReAwakening"
+            rating="7"
+          />
+          <MovieCard imgSrc="./slide9.png" title="Get Away" rating="7" />
+          <MovieCard
+            imgSrc="./slide10.png"
+            title="Sonic the Hedgehog 3"
+            rating="7"
+          />
         </div>
       </div>
     </div>

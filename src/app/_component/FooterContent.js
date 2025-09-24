@@ -38,10 +38,14 @@ export const FooterContent = (props) => {
           </div>
           <div className="flex flex-col gap-[12px]">
             <p className="text-[14px]">Follow Us</p>
-            <div className="flex gap-[5px]">
-              <p>Facebook </p>
+            <div className="flex gap-[10px]">
+              {/* <a href="Facebook"></a>
+              <a href="Instagram"></a>
+              <a href="Twitter"></a>
+              <a href="Youtube"></a> */}
+              <p>Facebook</p>
               <p>Instagram </p>
-              <p>Twitterk </p>
+              <p>Twitter </p>
               <p>Youtube </p>
             </div>
           </div>

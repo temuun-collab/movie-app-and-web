@@ -1,9 +1,12 @@
 export const HeroSlide = (props) => {
-  const { imgSrc, title, description, rate } = props;
+  const { imgSrc, title, description, rate, button, beforeButton } = props;
   return (
     <div className="w-[1440px] h-[600px]   ">
       <div className=" flex gap-5 relative ">
         <img src={imgSrc} className="w-[1440px] h-[600px] absolute -z-1 " />
+        <div style={{ paddingTop: "290px", paddingLeft: "20px" }}>
+          {beforeButton}
+        </div>
         <div
           className="flex justify-between w-[1350px]"
           style={{ paddingTop: "170px", paddingLeft: "139px" }}
@@ -25,10 +28,8 @@ export const HeroSlide = (props) => {
               Watch trailer
             </button>
           </div>
-          <div style={{ paddingTop: "120px" }}>
-            <button className="w-[40px] h-[40px] bg-[#F4F4F5] rounded-full flex justify-center items-center">
-              <img src="./HeroVector.png" className="w-[16px] h-[16px]" />
-            </button>
+          <div style={{ paddingTop: "120px", paddingBottom: "30px" }}>
+            {button}
           </div>
         </div>
       </div>
