@@ -38,17 +38,19 @@ export const HeroSection = (props) => {
     getData();
   }, []);
   if (loading) {
-    return <div className="w-[1440px] h-[600px] bg-[#F4F4F5]"></div>;
+    return (
+      <div className="w-[1440px] h-[600px] bg-[#F4F4F5] max-sm:w-[430px] max-sm:bg-[#F4F4F5]"></div>
+    );
   }
 
   return (
     <div className="w-[100vw] flex justify-center">
       <div className="w-[1440px] h-[600px] overflow-scroll ">
         <div
-          className="w-[4320px] flex gap-5 relative translate-x-[0px]
+          className="w-[4320px] flex gap-5 relative translate-x-[0px] max-sm:w-[1125px]
 "
         >
-          {heroSectionData.slice(0, 3).map((movie, index) => {
+          {heroSectionData.slice(0, 1).map((movie, index) => {
             return (
               <HeroSlide
                 key={index}
@@ -57,7 +59,53 @@ export const HeroSection = (props) => {
                 description={movie.overview}
                 button={
                   <button
-                    className="w-[40px] h-[40px] bg-[#F4F4F5] rounded-full flex justify-center items-center"
+                    className="w-[40px] h-[40px] bg-[#F4F4F5] rounded-full flex justify-center items-center max-sm:hidden"
+                    onClick={activeButton}
+                  >
+                    <img src="./HeroVector.png" className="w-[16px] h-[16px]" />
+                  </button>
+                }
+                rate={7}
+              />
+            );
+          })}
+          {heroSectionData.slice(1, 2).map((movie, index) => {
+            return (
+              <HeroSlide
+                key={index}
+                imgSrc={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                title={movie.title}
+                description={movie.overview}
+                button={
+                  <button
+                    className="w-[40px] h-[40px] bg-[#F4F4F5] rounded-full flex justify-center items-center max-sm:hidden"
+                    onClick={activeButton}
+                  >
+                    <img src="./HeroVector.png" className="w-[16px] h-[16px]" />
+                  </button>
+                }
+                rate={7}
+                beforeButton={
+                  <button
+                    className="w-[40px] h-[40px] bg-[#F4F4F5] rounded-full flex justify-center items-center max-sm:hidden"
+                    onClick={activeButton}
+                  >
+                    <img src="./HeroVector.png" className="w-[16px] h-[16px]" />
+                  </button>
+                }
+              />
+            );
+          })}
+          {heroSectionData.slice(2, 3).map((movie, index) => {
+            return (
+              <HeroSlide
+                key={index}
+                imgSrc={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                title={movie.title}
+                description={movie.overview}
+                beforeButton={
+                  <button
+                    className="w-[40px] h-[40px] bg-[#F4F4F5] rounded-full flex justify-center items-center max-sm:hidden"
                     onClick={activeButton}
                   >
                     <img src="./HeroVector.png" className="w-[16px] h-[16px]" />

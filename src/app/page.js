@@ -3,10 +3,10 @@ import "./index.css";
 import { FooterContent } from "./_component/FooterContent";
 import { Header } from "./_Features/Header";
 import { HeroSection } from "./_Features/HeroSection";
-import { UpcomingMovieList } from "./_Features/UpcomingMovieList";
-import { PopularMovieList } from "./_Features/PopularMovieList";
+import { UpcomingMovieList } from "./UpComing/UpcomingMovieList";
+import { PopularMovieList } from "./Popular/PopularMovieList";
 import { useEffect } from "react";
-import { TopRatedMovieList } from "./_Features/TopRatedMovieList";
+import { TopRatedMovieList } from "./TopRated/TopRatedMovieList";
 
 const apiLink =
   "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
