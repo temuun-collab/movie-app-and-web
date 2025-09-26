@@ -34,10 +34,10 @@ export const PopularMovieList = (props) => {
   }
   return (
     <div
-      className="w-[100vw] flex flex-col gap-[30px] items-center"
+      className="w-[100vw] flex flex-col gap-[30px] items-center max-sm:w-[430px]"
       style={{ paddingTop: "40px" }}
     >
-      <div className="flex justify-between w-[1277px] h-[36px]">
+      <div className="flex justify-between w-[1277px] h-[36px] max-sm:w-[400px]">
         <p className="text-[24px] text-black 0">Popular</p>
         <Link href="/Popular">
           <button className="w-[120px] h-[36px] text-black flex justify-center items-center">
@@ -46,26 +46,14 @@ export const PopularMovieList = (props) => {
           </button>
         </Link>
       </div>
-      <div className="flex flex-col gap-[30px]">
-        <div className="flex w-[1277px] gap-[30px] ">
-          {popularMoviesData.slice(0, 5).map((movie, index) => {
+      <div className="flex flex-col gap-[30px] max-sm:w-[430px] max-sm:flex max-sm:flex-col max-sm:items-center">
+        <div className=" w-[1277px] gap-[30px] grid grid-cols-5 max-sm:w-[350px] max-sm:grid max-sm:grid-cols-2">
+          {popularMoviesData.slice(0, 10).map((movie, index) => {
             return (
               <MovieCard
                 key={index}
                 title={movie.title}
-                imgSrc={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-                rating={movie.rating}
-              />
-            );
-          })}
-        </div>
-        <div className="flex w-[1277px] gap-[30px] ">
-          {popularMoviesData.slice(5, 10).map((movie, index) => {
-            return (
-              <MovieCard
-                key={index}
-                title={movie.title}
-                imgSrc={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                imgSrc={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                 rating={movie.rating}
               />
             );

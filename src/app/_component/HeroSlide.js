@@ -14,7 +14,7 @@ export const HeroSlide = (props) => {
           {beforeButton}
         </div>
         <div
-          className="flex justify-between w-[1350px]  max-sm:w-[430px] max-sm:h-[246px] max-sm:pt-0  pt-[170px] pl-[139px]"
+          className="flex justify-between w-[1350px]  max-sm:w-[430px] max-sm:h-[246px] max-sm:pt-0  pt-[170px] pl-[139px] max-sm:flex max-sm:justify-center"
           style={{ paddingTop: "170px", paddingLeft: "139px" }}
         >
           <div className="flex flex-col gap-[16px]">

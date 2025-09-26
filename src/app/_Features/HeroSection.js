@@ -12,14 +12,15 @@ const options = {
   },
 };
 export const HeroSection = (props) => {
-  const [slide, setSlide] = useState(0);
-  const activeButton = () => {
-    if (slide === 0) {
-      return <div className="translate-x-[0px]"></div>;
-    } else if (setSlide(slide === 1)) {
-      return <div className="translate-x-[1440px]"></div>;
-    } else if (slide === 2) {
-      return <div className="translate-x-[2880px]"></div>;
+  const [slide, setSlide] = useState(1);
+  const nextActiveButton = () => {
+    setSlide(slide + 1);
+  };
+  const backActiveButton = () => {
+    if (slide === 1) {
+      return;
+    } else {
+      setSlide(slide - 1);
     }
   };
   const [heroSectionData, setHeroSectionData] = useState([]);
@@ -45,7 +46,7 @@ export const HeroSection = (props) => {
 
   return (
     <div className="w-[100vw] flex justify-center">
-      <div className="w-[1440px] h-[600px] overflow-scroll ">
+      <div className="w-[1440px] h-[600px] overflow-scroll  max-sm:w-[430px]">
         <div
           className="w-[4320px] flex gap-5 relative translate-x-[0px] max-sm:w-[1125px]
 "
@@ -60,7 +61,7 @@ export const HeroSection = (props) => {
                 button={
                   <button
                     className="w-[40px] h-[40px] bg-[#F4F4F5] rounded-full flex justify-center items-center max-sm:hidden"
-                    onClick={activeButton}
+                    onClick={nextActiveButton}
                   >
                     <img src="./HeroVector.png" className="w-[16px] h-[16px]" />
                   </button>
@@ -79,7 +80,7 @@ export const HeroSection = (props) => {
                 button={
                   <button
                     className="w-[40px] h-[40px] bg-[#F4F4F5] rounded-full flex justify-center items-center max-sm:hidden"
-                    onClick={activeButton}
+                    onClick={nextActiveButton}
                   >
                     <img src="./HeroVector.png" className="w-[16px] h-[16px]" />
                   </button>
@@ -88,7 +89,7 @@ export const HeroSection = (props) => {
                 beforeButton={
                   <button
                     className="w-[40px] h-[40px] bg-[#F4F4F5] rounded-full flex justify-center items-center max-sm:hidden"
-                    onClick={activeButton}
+                    onClick={backActiveButton}
                   >
                     <img src="./HeroVector.png" className="w-[16px] h-[16px]" />
                   </button>
@@ -106,7 +107,7 @@ export const HeroSection = (props) => {
                 beforeButton={
                   <button
                     className="w-[40px] h-[40px] bg-[#F4F4F5] rounded-full flex justify-center items-center max-sm:hidden"
-                    onClick={activeButton}
+                    onClick={backActiveButton}
                   >
                     <img src="./HeroVector.png" className="w-[16px] h-[16px]" />
                   </button>

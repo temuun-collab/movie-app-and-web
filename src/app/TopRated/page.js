@@ -39,37 +39,13 @@ export default function TopRated() {
           <p className="text-[24px] text-black 0">Top Rated</p>
         </div>
         <div className="flex flex-col gap-[30px]">
-          <div className="flex w-[1277px] gap-[30px] max-sm:hidden">
-            {topRatedMoviesData.slice(0, 5).map((movie, index) => {
+          <div className=" w-[1277px] gap-[30px] grid grid-cols-5">
+            {topRatedMoviesData.slice(0, 20).map((movie, index) => {
               return (
                 <MovieCard
                   key={index}
                   title={movie.title}
-                  imgSrc={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-                  rating={movie.rating}
-                />
-              );
-            })}
-          </div>
-          <div className="flex w-[1277px] gap-[30px] max-sm:hidden">
-            {topRatedMoviesData.slice(5, 10).map((movie, index) => {
-              return (
-                <MovieCard
-                  key={index}
-                  title={movie.title}
-                  imgSrc={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-                  rating={movie.rating}
-                />
-              );
-            })}
-          </div>
-          <div className="flex w-[1277px] gap-[30px] max-sm:hidden">
-            {topRatedMoviesData.slice(15, 20).map((movie, index) => {
-              return (
-                <MovieCard
-                  key={index}
-                  title={movie.title}
-                  imgSrc={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                  imgSrc={`https://image.tmdb.org/t/p/original/${movie.posterp_path}`}
                   rating={movie.rating}
                 />
               );
