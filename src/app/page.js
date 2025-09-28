@@ -35,7 +35,10 @@ export default function Home() {
       <UpcomingMovieList />
       <PopularMovieList />
       <TopRatedMovieList />
-      <FooterContent />
+      <div className="mt-5">
+        <FooterContent />
+      </div>
+      
     </div>
   );
 }

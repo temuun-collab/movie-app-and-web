@@ -4,6 +4,7 @@ import { Header } from "../_Features/Header";
 import { MovieCard } from "../_component/MovieCard";
 import { useEffect, useState } from "react";
 import { FooterContent } from "../_component/FooterContent";
+import { Pagination } from "../_component/Pagination";
 const apiLink =
   "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
 const options = {
@@ -53,7 +54,10 @@ export default function UpComing() {
           </div>
         </div>
       </div>
-      <FooterContent />
+      <div className="mt-5 mb-5"> 
+       <Pagination/>
+      </div>
+       <FooterContent />
     </div>
   );
 }

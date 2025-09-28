@@ -8,14 +8,14 @@ export const HeroSlide = (props) => {
           className="w-[1440px] h-[600px] absolute -z-1 max-sm:w-[430px] max-sm:h-[246px] max-sm:relative "
         />
         <div
-          className="max-sm:pt-0 pt-[290px] pl-[20px]"
-          style={{ paddingTop: "290px", paddingLeft: "20px" }}
+          className="max-sm:pt-0 pt-[290px] pl-[20px] mt-[290px] ml-[20px]"
+          
         >
           {beforeButton}
         </div>
         <div
-          className="flex justify-between w-[1350px]  max-sm:w-[430px] max-sm:h-[246px] max-sm:pt-0  pt-[170px] pl-[139px] max-sm:flex max-sm:justify-center"
-          style={{ paddingTop: "170px", paddingLeft: "139px" }}
+          className="flex justify-between w-[1350px]  max-sm:w-[430px] max-sm:h-[246px] max-sm:pt-0  pt-[170px] pl-[139px] max-sm:flex max-sm:justify-center my-[170px] ml-[139px]"
+          
         >
           <div className="flex flex-col gap-[16px]">
             <div className="flex flex-col max-sm:flex-row max-sm:w-[430px] max-sm:pl-[10px]">
@@ -44,7 +44,7 @@ export const HeroSlide = (props) => {
               Watch trailer
             </button>
           </div>
-          <div style={{ paddingTop: "120px", paddingBottom: "30px" }}>
+          <div  className="mt-[120px] mb-[30px]">
             {button}
           </div>
         </div>
