@@ -4,7 +4,7 @@ import { Header } from "../_Features/Header";
 import { MovieCard } from "../_component/MovieCard";
 import { useEffect, useState } from "react";
 import { FooterContent } from "../_component/FooterContent";
-import { Pagination } from "../_component/Pagination";
+
 const apiLink =
   "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1";
 const options = {
@@ -17,7 +17,7 @@ const options = {
 };
 export default function TopRated() {
   const [topRatedMoviesData, setTopRatedMoviesData] = useState([]);
-
+  
   const getData = async () => {
     const data = await fetch(apiLink, options);
     const jsonData = await data.json();
@@ -41,7 +41,17 @@ export default function TopRated() {
         </div>
         <div className="flex flex-col gap-[30px]">
           <div className=" w-[1277px] gap-[30px] grid grid-cols-5">
-            {topRatedMoviesData.slice(0, 20).map((movie, index) => {
+            {topRatedMoviesData.slice(0, 10).map((movie, index) => {
+              return (
+                <MovieCard
+                  key={index}
+                  title={movie.title}
+                  imgSrc={`https://image.tmdb.org/t/p/original/${movie.posterp_path}`}
+                  rating={movie.rating}
+                />
+              );
+            })}
+            {topRatedMoviesData.slice(10, 20).map((movie, index) => {
               return (
                 <MovieCard
                   key={index}
@@ -55,7 +65,19 @@ export default function TopRated() {
         </div>
       </div>
       <div className="mt-5 mb-5">
-        <Pagination/>
+        <div className="w-[1280px] h-[40px] flex justify-end">
+        <div className="w-[382px] h-[40px] flex flex-row gap-[3px]">
+            <button className="w-[114px] h-[40px] flex justify-center items-center text-[#09090B]"><img src="./paginationVector" className="w-[5px] h-[5px]"/>Previous</button>
+             <div className="w-[172px] h-[40px] flex flex-row gap-[3px]">
+            <button className="w-[40px] h-[40px] flex justify-center items-center text-black text-[14px] rounded-md  ">1</button>
+            <button className="w-[40px] h-[40px] flex justify-center items-center text-black text-[14px] rounded-md  ">2</button>
+            <button className="w-[40px] h-[40px] flex justify-center items-center text-black text-[14px] rounded-md  ">...</button>
+            <button className="w-[40px] h-[40px] flex justify-center items-center text-black text-[14px] rounded-md  ">5</button>
+            </div>
+            <button className="w-[88px] h-[40px] flex justify-center items-center text-black">Next<img src="./paginationNextVector" className="w-[5px] h-[5px]"/></button>
+        </div>
+       
+    </div>
       </div>
       <FooterContent />
     </div>

@@ -8,7 +8,7 @@ export const HeroSlide = (props) => {
           className="w-[1440px] h-[600px] absolute -z-1 max-sm:w-[430px] max-sm:h-[246px] max-sm:relative "
         />
         <div
-          className="max-sm:pt-0 pt-[290px] pl-[20px] mt-[290px] ml-[20px]"
+          className="max-sm:mt-0 max-sm:ml-0 mt-[290px] ml-[20px]"
           
         >
           {beforeButton}
