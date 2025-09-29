@@ -1,7 +1,17 @@
+import { useRouter } from "next/navigation";
 export const MovieCard = (props) => {
-  const { imgSrc, title, rating } = props;
+  const { imgSrc, title, rating, movieId } = props;
+  const router = useRouter();
+  console.log("this is movieId", movieId);
+  const handleMovieClick = () => {
+    router.push(`movie-detail/${movieId}`);
+  };
   return (
-    <div className="w-[229px] h-[439px] flex flex-col max-sm:w-[157px] ">
+    <div
+      className="w-[229px] h-[439px] flex flex-col max-sm:w-[157px] "
+      style={{ cursor: "pointer" }}
+      onClick={handleMovieClick}
+    >
       <img
         src={imgSrc}
         className="w-[229px] h-[340px] rounded-md max-sm:w-[157px] max-sm:h-[300px]"

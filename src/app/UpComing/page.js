@@ -1,12 +1,9 @@
 "use client";
-import Home from "../page";
-import { Header } from "../_Features/Header";
+import { Header } from "../_features/Header";
 import { MovieCard } from "../_component/MovieCard";
 import { useEffect, useState } from "react";
 import { FooterContent } from "../_component/FooterContent";
 
-const apiLink =
-  "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
 const options = {
   method: "GET",
   headers: {
@@ -17,7 +14,19 @@ const options = {
 };
 export default function UpComing() {
   const [upcomingMoviesData, setUpcomingMoviesData] = useState([]);
+  const [page, setPage] = useState(1);
+  const apiLink = `https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=${page}`;
 
+  const handleAddpage = () => {
+    setPage(page + 1);
+  };
+  const handleBeforePage = () => {
+    if (page === 1) {
+      return;
+    } else {
+      setPage(page - 1);
+    }
+  };
   const getData = async () => {
     const data = await fetch(apiLink, options);
     const jsonData = await data.json();
@@ -41,35 +50,78 @@ export default function UpComing() {
         </div>
         <div className="flex flex-col gap-[30px]">
           <div className=" w-[1277px] gap-[30px]  grid grid-cols-5">
-            {upcomingMoviesData.slice(0, 20).map((movie, index) => {
-              return (
-                <MovieCard
-                  key={index}
-                  title={movie.title}
-                  imgSrc={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                  rating={movie.rating}
-                />
-              );
-            })}
+            {page === 1 &&
+              upcomingMoviesData.slice(0, 10).map((movie, index) => {
+                return (
+                  <MovieCard
+                    key={index}
+                    title={movie.title}
+                    imgSrc={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                    rating={movie.rating}
+                    movieId={movie.id}
+                  />
+                );
+              })}
+            {page === 2 &&
+              upcomingMoviesData.slice(10, 20).map((movie, index) => {
+                return (
+                  <MovieCard
+                    key={index}
+                    title={movie.title}
+                    imgSrc={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                    rating={movie.rating}
+                    movieId={movie.id}
+                  />
+                );
+              })}
           </div>
         </div>
       </div>
-      <div className="mt-5 mb-5"> 
-       <div className="w-[1280px] h-[40px] flex justify-end">
-        <div className="w-[382px] h-[40px] flex flex-row gap-[3px]">
-            <button className="w-[114px] h-[40px] flex justify-center items-center text-[#09090B]"><img src="./paginationVector" className="w-[5px] h-[5px]"/>Previous</button>
-             <div className="w-[172px] h-[40px] flex flex-row gap-[3px]">
-            <button className="w-[40px] h-[40px] flex justify-center items-center text-black text-[14px] rounded-md  ">1</button>
-            <button className="w-[40px] h-[40px] flex justify-center items-center text-black text-[14px] rounded-md  ">2</button>
-            <button className="w-[40px] h-[40px] flex justify-center items-center text-black text-[14px] rounded-md  ">...</button>
-            <button className="w-[40px] h-[40px] flex justify-center items-center text-black text-[14px] rounded-md  ">5</button>
+      <div className="mt-5 mb-5">
+        <div className="w-[1280px] h-[40px] flex justify-end">
+          <div className="w-[382px] h-[40px] flex flex-row gap-[3px]">
+            <button
+              className="w-[114px] h-[40px] flex justify-center items-center text-[#09090B]"
+              onClick={handleBeforePage}
+            >
+              <img src="./paginationVector" className="w-[5px] h-[5px]" />
+              Previous
+            </button>
+            <div className="w-[172px] h-[40px] flex flex-row gap-[3px]">
+              <button
+                className="w-[40px] h-[40px] flex justify-center items-center text-black text-[14px] rounded-md "
+                style={{ border: page == "page===1" ? "1px" : "none" }}
+              >
+                1
+              </button>
+              <button
+                className="w-[40px] h-[40px] flex justify-center items-center text-black text-[14px] rounded-md  "
+                style={{ border: page == "page===2" ? "1px" : "none" }}
+              >
+                2
+              </button>
+              <button className="w-[40px] h-[40px] flex justify-center items-center text-black text-[14px] rounded-md  ">
+                ...
+              </button>
+              <button className="w-[40px] h-[40px] flex justify-center items-center text-black text-[14px] rounded-md  ">
+                5
+              </button>
             </div>
-            <button className="w-[88px] h-[40px] flex justify-center items-center text-black">Next<img src="./paginationNextVector" className="w-[5px] h-[5px]"/></button>
+            <button
+              className="w-[88px] h-[40px] flex justify-center items-center text-black"
+              onClick={handleAddpage}
+              style={{
+                border: page == "Next" ? "1px" : "none",
+                borderColor: page == "Next" ? "gray" : "none",
+              }}
+            >
+              Next
+              <img src="./paginationNextVector" className="w-[5px] h-[5px]" />
+            </button>
+          </div>
         </div>
-       
-    </div>
       </div>
-       <FooterContent />
+      <FooterContent />
     </div>
   );
 }
