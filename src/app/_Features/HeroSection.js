@@ -51,71 +51,86 @@ export const HeroSection = (props) => {
           className="w-[4320px] flex gap-5 relative translate-x-[0px] max-sm:w-[1125px]
 "
         >
-          {heroSectionData.slice(0, 1).map((movie, index) => {
-            return (
-              <HeroSlide
-                key={index}
-                imgSrc={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                title={movie.title}
-                description={movie.overview}
-                button={
-                  <button
-                    className="w-[40px] h-[40px] bg-[#F4F4F5] rounded-full flex justify-center items-center max-sm:hidden"
-                    onClick={nextActiveButton}
-                  >
-                    <img src="./HeroVector.png" className="w-[16px] h-[16px]" />
-                  </button>
-                }
-                rate={7}
-              />
-            );
-          })}
-          {heroSectionData.slice(1, 2).map((movie, index) => {
-            return (
-              <HeroSlide
-                key={index}
-                imgSrc={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                title={movie.title}
-                description={movie.overview}
-                button={
-                  <button
-                    className="w-[40px] h-[40px] bg-[#F4F4F5] rounded-full flex justify-center items-center max-sm:hidden"
-                    onClick={nextActiveButton}
-                  >
-                    <img src="./HeroVector.png" className="w-[16px] h-[16px]" />
-                  </button>
-                }
-                rate={7}
-                beforeButton={
-                  <button
-                    className="w-[40px] h-[40px] bg-[#F4F4F5] rounded-full flex justify-center items-center max-sm:hidden"
-                    onClick={backActiveButton}
-                  >
-                    <img src="./HeroVector.png" className="w-[16px] h-[16px]" />
-                  </button>
-                }
-              />
-            );
-          })}
-          {heroSectionData.slice(2, 3).map((movie, index) => {
-            return (
-              <HeroSlide
-                key={index}
-                imgSrc={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                title={movie.title}
-                description={movie.overview}
-                beforeButton={
-                  <button
-                    className="w-[40px] h-[40px] bg-[#F4F4F5] rounded-full flex justify-center items-center max-sm:hidden"
-                    onClick={backActiveButton}
-                  >
-                    <img src="./HeroVector.png" className="w-[16px] h-[16px]" />
-                  </button>
-                }
-                rate={7}
-              />
-            );
-          })}
+          {slide === 1 &&
+            heroSectionData.slice(0, 1).map((movie, index) => {
+              return (
+                <HeroSlide
+                  key={index}
+                  imgSrc={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                  title={movie.title}
+                  description={movie.overview}
+                  button={
+                    <button
+                      className="w-[40px] h-[40px] bg-[#F4F4F5] rounded-full flex justify-center items-center max-sm:hidden"
+                      onClick={nextActiveButton}
+                    >
+                      <img
+                        src="./HeroVector.png"
+                        className="w-[16px] h-[16px]"
+                      />
+                    </button>
+                  }
+                  rate={movie.vote_average}
+                />
+              );
+            })}
+          {slide === 2 &&
+            heroSectionData.slice(1, 2).map((movie, index) => {
+              return (
+                <HeroSlide
+                  key={index}
+                  imgSrc={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                  title={movie.title}
+                  description={movie.overview}
+                  button={
+                    <button
+                      className="w-[40px] h-[40px] bg-[#F4F4F5] rounded-full flex justify-center items-center max-sm:hidden"
+                      onClick={nextActiveButton}
+                    >
+                      <img
+                        src="./HeroVector.png"
+                        className="w-[16px] h-[16px]"
+                      />
+                    </button>
+                  }
+                  rate={movie.vote_average}
+                  beforeButton={
+                    <button
+                      className="w-[40px] h-[40px] bg-[#F4F4F5] rounded-full flex justify-center items-center max-sm:hidden"
+                      onClick={backActiveButton}
+                    >
+                      <img
+                        src="./HeroVector.png"
+                        className="w-[16px] h-[16px]"
+                      />
+                    </button>
+                  }
+                />
+              );
+            })}
+          {slide === 3 &&
+            heroSectionData.slice(2, 3).map((movie, index) => {
+              return (
+                <HeroSlide
+                  key={index}
+                  imgSrc={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                  title={movie.title}
+                  description={movie.overview}
+                  beforeButton={
+                    <button
+                      className="w-[40px] h-[40px] bg-[#F4F4F5] rounded-full flex justify-center items-center max-sm:hidden"
+                      onClick={backActiveButton}
+                    >
+                      <img
+                        src="./HeroVector.png"
+                        className="w-[16px] h-[16px]"
+                      />
+                    </button>
+                  }
+                  rate={movie.vote_average}
+                />
+              );
+            })}
         </div>
       </div>
     </div>

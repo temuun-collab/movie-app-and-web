@@ -3,6 +3,7 @@ import { Header } from "../_features/Header";
 import { MovieCard } from "../_component/MovieCard";
 import { useEffect, useState } from "react";
 import { FooterContent } from "../_component/FooterContent";
+import { useParams } from "next/navigation";
 
 const options = {
   method: "GET",
@@ -12,10 +13,13 @@ const options = {
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4NzZiMzEwNzJlZDg5ODcwMzQxM2Y0NzkyYzZjZTdjYyIsIm5iZiI6MTczODAyNjY5NS44NCwic3ViIjoiNjc5ODJlYzc3MDJmNDkyZjQ3OGY2OGUwIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.k4OF9yGrhA2gZ4VKCH7KLnNBB2LIf1Quo9c3lGF6toE",
   },
 };
-export default function UpComing() {
+export default function MoreLikeMovie() {
   const [upcomingMoviesData, setUpcomingMoviesData] = useState([]);
   const [page, setPage] = useState(1);
-  const apiLink = `https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=${page}`;
+  const param = useParams();
+  const { id } = param;
+  const apiLink = `https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=${page}`;
+  console.log("this is id", id);
 
   const handleAddpage = () => {
     setPage(page + 1);
@@ -30,6 +34,8 @@ export default function UpComing() {
   const getData = async () => {
     const data = await fetch(apiLink, options);
     const jsonData = await data.json();
+    // console.log("this is json", jsonData);
+
     setUpcomingMoviesData(jsonData.results);
   };
 
@@ -37,9 +43,12 @@ export default function UpComing() {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [id]);
+  if (!id) {
+    return <div>something wrong</div>;
+  }
   return (
-    <div>
+    <div className="w-[100vw] h-[100vw] bg-white">
       <Header />
       <div
         className="w-[100vw] flex flex-col gap-[30px] items-center"
@@ -51,7 +60,7 @@ export default function UpComing() {
         <div className="flex flex-col gap-[30px]">
           <div className=" w-[1277px] gap-[30px]  grid grid-cols-5">
             {page === 1 &&
-              upcomingMoviesData.slice(0, 10).map((movie, index) => {
+              upcomingMoviesData?.slice(0, 10).map((movie, index) => {
                 return (
                   <MovieCard
                     key={index}
@@ -63,7 +72,7 @@ export default function UpComing() {
                 );
               })}
             {page === 2 &&
-              upcomingMoviesData.slice(10, 20).map((movie, index) => {
+              upcomingMoviesData?.slice(10, 20).map((movie, index) => {
                 return (
                   <MovieCard
                     key={index}

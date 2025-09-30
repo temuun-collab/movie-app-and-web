@@ -55,7 +55,7 @@ export const TopRatedMovieList = (props) => {
                 key={index}
                 title={movie.title}
                 imgSrc={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                rating={movie.rating}
+                rating={movie.vote_average}
                 movieId={movie.id}
               />
             );

@@ -33,10 +33,12 @@ export const HeroSlide = (props) => {
                 {description}
               </p>
             </div>
-            <button className="w-[145px] h-[40px] bg-white rounded-md gap-[8px] text-black  justify-center items-center flex">
-              <img src="./trailer.png" className="w-[9px] h-[12px]" />
-              Watch trailer
-            </button>
+            <div className="mt-5">
+              <button className="w-[145px] h-[40px] bg-white rounded-md gap-[8px] text-black  justify-center items-center flex">
+                <img src="./trailer.png" className="w-[9px] h-[12px]" />
+                Watch trailer
+              </button>
+            </div>
           </div>
           <div className="mt-[120px] mb-[30px]">{button}</div>
         </div>

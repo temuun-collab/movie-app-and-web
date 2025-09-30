@@ -18,7 +18,7 @@ export const MovieCard = (props) => {
       />
       <div className="w-[229px] h-[95px] bg-gray-100 flex flex-col items-center justify-center rounded-md max-sm:w-[157px] max-sm:h-[76px]">
         <div className="flex">
-          <img src="./star.png" className="w-[16px] h-[16px]" />
+          <img src="/star.png" className="w-[16px] h-[16px]" />
           <p className="w-[193px] h-[23px] text-black max-sm:w-[141px] max-sm:h-[16px]">
             {rating}/10
           </p>

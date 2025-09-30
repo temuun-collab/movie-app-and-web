@@ -1,16 +1,40 @@
-import { useState , useEffect} from "react";
+import { useState, useEffect } from "react";
 import { Genre } from "../_component/Genre";
+import { Allan } from "next/font/google";
+const apiLink = `https://api.themoviedb.org/3/genre/movie/list?language=en`;
+const options = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4NzZiMzEwNzJlZDg5ODcwMzQxM2Y0NzkyYzZjZTdjYyIsIm5iZiI6MTczODAyNjY5NS44NCwic3ViIjoiNjc5ODJlYzc3MDJmNDkyZjQ3OGY2OGUwIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.k4OF9yGrhA2gZ4VKCH7KLnNBB2LIf1Quo9c3lGF6toE",
+  },
+};
 export const HeaderGenreDropdown = (props) => {
-const [genre , setGenre] = useState(false);
-const activeButtonGenre = ()=> {
- setGenre(!genre);
+  const [allGenre, setAllGenre] = useState();
+  const [genre, setGenre] = useState(false);
+  const activeButtonGenre = () => {
+    setGenre(!genre);
   };
-// useEffect(()=>)
+  const getData = async () => {
+    const data = await fetch(apiLink, options);
+    const jsonData = await data.json();
+    setAllGenre(jsonData.results);
+    // console.log("this is", jsonData);
+  };
+
+  console.log("allGenre", allGenre);
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
-    
     <div className="flex gap-[12px] relative">
-      <button onClick={activeButtonGenre} className="w-[97px] h-[36px] rounded-md border-1 g-[8px] bg-white flex gap-[8px] justify-center items-center max-sm:hidden" >
-        <img className="w-[8px] h-[4px]" src="./logo1.png" />
+      <button
+        onClick={activeButtonGenre}
+        className="w-[97px] h-[36px] rounded-md border-1 g-[8px] bg-white flex gap-[8px] justify-center items-center max-sm:hidden"
+      >
+        <img className="w-[8px] h-[4px]" src="/logo1.png" />
         <p className="w-[41px] h-[20px] text-[14px] text-black ">Genre</p>
       </button>
       {genre && (
@@ -18,39 +42,43 @@ const activeButtonGenre = ()=> {
           <div className="flex flex-col m-5">
             <div className="w-[213px] h-[60px]">
               <h3 className="text-[24px] text-black">Genres</h3>
-              <p className="text-[16px] text-black">See lists of movies by genre</p>
+              <p className="text-[16px] text-black">
+                See lists of movies by genre
+              </p>
             </div>
-              <hr className="w-[537px] mt-3"/>
+            <hr className="w-[537px] mt-3" />
           </div>
           <div className="grid grid-cols-5 gap-[10px] m-5">
-            <Genre title="Action"/>
-          <Genre title="Adventure"/>
-          <Genre title="Animation"/>
-          <Genre title="Biography"/>
-          <Genre title="Comedy"/>
-          <Genre title="Crime"/>
-          <Genre title="Documentary"/>
-          <Genre title="Drama"/>
-          <Genre title="Family"/>
-          <Genre title="Fantasy"/>
-          <Genre title="Film-Noir"/>
-          <Genre title="Game-Show"/>
-          <Genre title="Horror"/>
-          <Genre title="Music"/>
-          <Genre title="Musical"/>
-          <Genre title="Mystery"/>
-          <Genre title="News"/>
-          <Genre title="Reality-TV"/>
-          <Genre title="Romance"/>
-          <Genre title="Sci-Fi"/>
-          <Genre title="Short"/>
-          <Genre title="Sport"/>
-          <Genre title="Talk-show"/>
-          <Genre title="Thriller"/>
-          <Genre title="War"/>
-          <Genre title="Western"/>
+            {allGenre?.map((movie, index) => {
+              return <Genre key={index} title={movie.title} />;
+            })}
+            {/* <Genre title="Action" />
+            <Genre title="Adventure" />
+            <Genre title="Animation" />
+            <Genre title="Biography" />
+            <Genre title="Comedy" />
+            <Genre title="Crime" />
+            <Genre title="Documentary" />
+            <Genre title="Drama" />
+            <Genre title="Family" />
+            <Genre title="Fantasy" />
+            <Genre title="Film-Noir" />
+            <Genre title="Game-Show" />
+            <Genre title="Horror" />
+            <Genre title="Music" />
+            <Genre title="Musical" />
+            <Genre title="Mystery" />
+            <Genre title="News" />
+            <Genre title="Reality-TV" />
+            <Genre title="Romance" />
+            <Genre title="Sci-Fi" />
+            <Genre title="Short" />
+            <Genre title="Sport" />
+            <Genre title="Talk-show" />
+            <Genre title="Thriller" />
+            <Genre title="War" />
+            <Genre title="Western" /> */}
           </div>
-          
         </div>
       )}
       <div
@@ -58,7 +86,7 @@ const activeButtonGenre = ()=> {
         style={{ paddingLeft: "5px" }}
       >
         <img
-          src="./logo2.png"
+          src="/logo2.png"
           className="w-[16px] h-[16px] max-sm:w-[12px] max-sm:h-[12px]"
         />
         <input
