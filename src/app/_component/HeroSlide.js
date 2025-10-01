@@ -1,5 +1,10 @@
+import { useState } from "react";
 export const HeroSlide = (props) => {
   const { imgSrc, title, description, rate, button, beforeButton } = props;
+  const [showTrailer, setShowTrailer] = useState(false);
+  const handleClickButton = () => {
+    setShowTrailer(!showTrailer);
+  };
   return (
     <div className="w-[1440px] h-[600px] max-sm:w-[430px] max-sm:h-[246px] ">
       <div className=" flex gap-5 relative max-sm:flex max-sm:flex-col">
@@ -34,10 +39,16 @@ export const HeroSlide = (props) => {
               </p>
             </div>
             <div className="mt-5">
-              <button className="w-[145px] h-[40px] bg-white rounded-md gap-[8px] text-black  justify-center items-center flex">
+              <button
+                className="w-[145px] h-[40px] bg-white rounded-md gap-[8px] text-black  justify-center items-center flex"
+                onClick={handleClickButton}
+              >
                 <img src="./trailer.png" className="w-[9px] h-[12px]" />
                 Watch trailer
               </button>
+              {showTrailer && (
+                <div className="absolute bg-white w-[997px] h-[561px]"></div>
+              )}
             </div>
           </div>
           <div className="mt-[120px] mb-[30px]">{button}</div>

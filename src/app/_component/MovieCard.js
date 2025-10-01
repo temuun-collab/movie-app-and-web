@@ -4,7 +4,8 @@ export const MovieCard = (props) => {
   const router = useRouter();
   console.log("this is movieId", movieId);
   const handleMovieClick = () => {
-    router.push(`movie-detail/${movieId}`);
+    router.replace(`/movie-detail/${movieId}`);
+    ``;
   };
   return (
     <div

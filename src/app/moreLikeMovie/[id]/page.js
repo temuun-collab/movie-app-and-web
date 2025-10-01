@@ -1,9 +1,9 @@
 "use client";
-import { Header } from "../_features/Header";
-import { MovieCard } from "../_component/MovieCard";
+import { Header } from "@/app/_features/Header";
+import { MovieCard } from "@/app/_component/MovieCard";
 import { useEffect, useState } from "react";
-import { FooterContent } from "../_component/FooterContent";
-import { useParams } from "next/navigation";
+import { FooterContent } from "@/app/_component/FooterContent";
+import { useParams, useSearchParams } from "next/navigation";
 
 const options = {
   method: "GET",
@@ -13,11 +13,16 @@ const options = {
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4NzZiMzEwNzJlZDg5ODcwMzQxM2Y0NzkyYzZjZTdjYyIsIm5iZiI6MTczODAyNjY5NS44NCwic3ViIjoiNjc5ODJlYzc3MDJmNDkyZjQ3OGY2OGUwIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.k4OF9yGrhA2gZ4VKCH7KLnNBB2LIf1Quo9c3lGF6toE",
   },
 };
-export default function MoreLikeMovie() {
-  const [upcomingMoviesData, setUpcomingMoviesData] = useState([]);
+export default function MoreLikeMovie(props) {
+  const [moreLikeMovie, setMoreLikeMovie] = useState([]);
   const [page, setPage] = useState(1);
+  const searchParams = useSearchParams();
   const param = useParams();
   const { id } = param;
+  const search = searchParams.get("id");
+
+  console.log(search);
+
   const apiLink = `https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=${page}`;
   console.log("this is id", id);
 
@@ -36,10 +41,10 @@ export default function MoreLikeMovie() {
     const jsonData = await data.json();
     // console.log("this is json", jsonData);
 
-    setUpcomingMoviesData(jsonData.results);
+    setMoreLikeMovie(jsonData.results);
   };
 
-  console.log("upcomingMoviesData", upcomingMoviesData);
+  console.log("moreLikeMovie", moreLikeMovie);
 
   useEffect(() => {
     getData();
@@ -55,12 +60,12 @@ export default function MoreLikeMovie() {
         style={{ paddingTop: "40px" }}
       >
         <div className="flex justify-between w-[1277px] h-[36px]">
-          <p className="text-[24px] text-black 0">Upcoming</p>
+          <p className="text-[24px] text-black 0">More like this</p>
         </div>
         <div className="flex flex-col gap-[30px]">
           <div className=" w-[1277px] gap-[30px]  grid grid-cols-5">
             {page === 1 &&
-              upcomingMoviesData?.slice(0, 10).map((movie, index) => {
+              moreLikeMovie?.slice(0, 10).map((movie, index) => {
                 return (
                   <MovieCard
                     key={index}
@@ -72,7 +77,7 @@ export default function MoreLikeMovie() {
                 );
               })}
             {page === 2 &&
-              upcomingMoviesData?.slice(10, 20).map((movie, index) => {
+              moreLikeMovie?.slice(10, 20).map((movie, index) => {
                 return (
                   <MovieCard
                     key={index}

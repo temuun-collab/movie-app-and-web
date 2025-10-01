@@ -11,7 +11,7 @@ const options = {
   },
 };
 export const HeaderGenreDropdown = (props) => {
-  const [allGenre, setAllGenre] = useState();
+  const [allGenre, setAllGenre] = useState([]);
   const [genre, setGenre] = useState(false);
   const activeButtonGenre = () => {
     setGenre(!genre);
@@ -19,7 +19,7 @@ export const HeaderGenreDropdown = (props) => {
   const getData = async () => {
     const data = await fetch(apiLink, options);
     const jsonData = await data.json();
-    setAllGenre(jsonData.results);
+    setAllGenre(jsonData.genres);
     // console.log("this is", jsonData);
   };
 
@@ -49,35 +49,9 @@ export const HeaderGenreDropdown = (props) => {
             <hr className="w-[537px] mt-3" />
           </div>
           <div className="grid grid-cols-5 gap-[10px] m-5">
-            {allGenre?.map((movie, index) => {
-              return <Genre key={index} title={movie.title} />;
+            {allGenre?.map((genre, index) => {
+              return <Genre key={index} title={genre.name} />;
             })}
-            {/* <Genre title="Action" />
-            <Genre title="Adventure" />
-            <Genre title="Animation" />
-            <Genre title="Biography" />
-            <Genre title="Comedy" />
-            <Genre title="Crime" />
-            <Genre title="Documentary" />
-            <Genre title="Drama" />
-            <Genre title="Family" />
-            <Genre title="Fantasy" />
-            <Genre title="Film-Noir" />
-            <Genre title="Game-Show" />
-            <Genre title="Horror" />
-            <Genre title="Music" />
-            <Genre title="Musical" />
-            <Genre title="Mystery" />
-            <Genre title="News" />
-            <Genre title="Reality-TV" />
-            <Genre title="Romance" />
-            <Genre title="Sci-Fi" />
-            <Genre title="Short" />
-            <Genre title="Sport" />
-            <Genre title="Talk-show" />
-            <Genre title="Thriller" />
-            <Genre title="War" />
-            <Genre title="Western" /> */}
           </div>
         </div>
       )}

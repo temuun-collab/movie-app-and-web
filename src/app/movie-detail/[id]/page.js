@@ -214,7 +214,7 @@ export default function MovieDetail() {
               <div className="w-[1080px]  flex flex-col gap-[30px] mt-5">
                 <div className="flex justify-between w-[1080px] max-sm:w-[400px]">
                   <p className="text-[24px] text-black 0">More Like This</p>
-                  <Link href="/moreLikeMovie">
+                  <Link href={`/moreLikeMovie/${id}`}>
                     <button className="w-[120px] h-[36px] text-black flex justify-center items-center">
                       See more
                       <img src="/vector.png" className="w-[9px] h-[9px]" />
