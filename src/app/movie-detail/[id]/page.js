@@ -19,14 +19,18 @@ export default function MovieDetail() {
   const [movieDirector, setMovieDirector] = useState();
   const [sameMovieMore, setSameMovieMore] = useState();
   const [loading, setLoading] = useState(false);
+  const [showTrailer, setShowTrailer] = useState(false);
+  const [playTrailer, setPlayTrailer] = useState([]);
   const param = useParams();
-
   const { id } = param;
   const apiLink = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
   const apiLink1 = `https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`;
   const apiLink2 = `https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=1`;
+  const apiLink3 = `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`;
   console.log("this is id", id);
-
+  const handleClickButton = () => {
+    setShowTrailer(!showTrailer);
+  };
   const getData = async () => {
     setLoading(true);
     const data = await fetch(apiLink, options);
@@ -54,10 +58,17 @@ export default function MovieDetail() {
     setSameMovieMore(jsonData.results);
     setLoading(false);
   };
+  const getData3 = async () => {
+    const data = await fetch(apiLink3, options);
+    const jsonData = await data.json();
+    console.log("this is my data", jsonData);
+    setPlayTrailer(jsonData);
+  };
   console.log("movieDetail", movieDetail);
   console.log("movieDirector", movieDirector);
   console.log("loading", loading);
   console.log("SameMovieMore", sameMovieMore);
+  console.log("playTrailer", playTrailer);
 
   useEffect(() => {
     getData();
@@ -69,6 +80,9 @@ export default function MovieDetail() {
 
   useEffect(() => {
     getData2();
+  }, [id]);
+  useEffect(() => {
+    getData3();
   }, [id]);
   if (loading) {
     return (
@@ -86,7 +100,7 @@ export default function MovieDetail() {
 
   return (
     <div className="bg-white w-[100vw] h-[100vw]">
-      <div className="w-[100vw] f">
+      <div className="w-[100vw]">
         <Header />
         <div className="w-[1080px] flex flex-col ">
           <div className="w-[100vw] flex justify-center">
@@ -122,9 +136,27 @@ export default function MovieDetail() {
               </div>
             </div>
           </div>
+          {showTrailer && (
+            <div
+              className="flex w-[100vw] h-[100vh] justify-center items-center absolute"
+              onClick={() => {
+                setShowTrailer(false);
+              }}
+            >
+              <div className="w-[997px] h-[651px] mb-80 ">
+                <iframe
+                  src={`https://www.youtube.com/embed/${playTrailer[0]?.key}`}
+                  width="997px"
+                  height="651px"
+                  allowFullScreen
+                  className="absolute z-10 "
+                ></iframe>
+              </div>
+            </div>
+          )}
 
           <div className="w-[100vw] flex justify-center">
-            <div className="w-[1080px] h-[428px] flex gap-10 mt-10">
+            <div className="w-[1080px] h-[428px] flex gap-10 mt-10 ">
               <img
                 src={`https://image.tmdb.org/t/p/original/${movieDetail.poster_path}`}
                 className="w-[290px] h-[428px] rounded-3"
@@ -132,10 +164,16 @@ export default function MovieDetail() {
               <div className="w-[760px] h-[428px] relative ">
                 <img
                   src={`https://image.tmdb.org/t/p/original/${movieDetail.backdrop_path}`}
-                  className="w-[760px] h-[428px] rounded-3 absolute "
+                  className="w-[760px] h-[428px] rounded-3 absolute  "
                 />
-                <div className=" absolute z-10 flex gap-5 mt-90 ml-10">
-                  <button className="rounded-full w-[40px] h-40px] bg-white flex justify-center items-center">
+                <div
+                  className=" absolute z-10 flex gap-5 mt-90 ml-10"
+                  style={{ zIndex: playTrailer === "" ? "-1" : "0" }}
+                >
+                  <button
+                    className="rounded-full w-[40px] h-40px] bg-white flex justify-center items-center"
+                    onClick={handleClickButton}
+                  >
                     <img className="w-[9px] h-[12px] " src="/vectorClick.png" />
                   </button>
                   <p className="text-[16px] text-white ">Play trailer</p>
@@ -239,6 +277,7 @@ export default function MovieDetail() {
             </div>
           </div>
         </div>
+
         <div className="mt-5">
           <FooterContent />
         </div>

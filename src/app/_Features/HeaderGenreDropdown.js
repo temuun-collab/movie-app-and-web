@@ -61,7 +61,7 @@ export const HeaderGenreDropdown = (props) => {
       >
         <img
           src="/logo2.png"
-          className="w-[16px] h-[16px] max-sm:w-[12px] max-sm:h-[12px]"
+          className="w-[11px] h-[11px] max-sm:w-[12px] max-sm:h-[12px]"
         />
         <input
           className="w-[350px] h-[36px] g-[10px] text-black max-sm:hidden"

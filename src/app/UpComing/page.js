@@ -48,8 +48,8 @@ export default function UpComing() {
         <div className="flex justify-between w-[1277px] h-[36px]">
           <p className="text-[24px] text-black 0">Upcoming</p>
         </div>
-        <div className="flex flex-col gap-[30px]">
-          <div className=" w-[1277px] gap-[30px]  grid grid-cols-5">
+        <div className="flex flex-col gap-[30px] max-sm:w-[430px] max-sm:flex max-sm:flex-col max-sm:items-center">
+          <div className=" w-[1277px] gap-[30px]  grid grid-cols-5 max-sm:grid max-sm:grid-cols-2">
             {page === 1 &&
               upcomingMoviesData.slice(0, 10).map((movie, index) => {
                 return (
