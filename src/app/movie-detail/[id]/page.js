@@ -23,66 +23,58 @@ export default function MovieDetail() {
   const [playTrailer, setPlayTrailer] = useState([]);
   const param = useParams();
   const { id } = param;
-  const apiLink = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
-  const apiLink1 = `https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`;
-  const apiLink2 = `https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=1`;
-  const apiLink3 = `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`;
+  const apiLinkMovieMore = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
+  const apiLinkTeamInf = `https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`;
+  const apiLinkSimilarMovie = `https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=1`;
+  const apiLinkTrailerVideo = `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`;
   console.log("this is id", id);
   const handleClickButton = () => {
     setShowTrailer(!showTrailer);
   };
-  const getData = async () => {
+  const getDataMovieMore = async () => {
     setLoading(true);
-    const data = await fetch(apiLink, options);
+    const data = await fetch(apiLinkMovieMore, options);
     const jsonData = await data.json();
 
-    console.log("this is my data", jsonData);
     setMovieDetail(jsonData);
     setLoading(false);
   };
-  const getData1 = async () => {
+  const getDataTeamInf = async () => {
     setLoading(true);
-    const data = await fetch(apiLink1, options);
+    const data = await fetch(apiLinkTeamInf, options);
     const jsonData = await data.json();
 
-    console.log("this is my data", jsonData);
     setMovieDirector(jsonData);
     setLoading(false);
   };
-  const getData2 = async () => {
+  const getDataSimilarMovie = async () => {
     setLoading(true);
-    const data = await fetch(apiLink2, options);
+    const data = await fetch(apiLinkSimilarMovie, options);
     const jsonData = await data.json();
 
-    console.log("this is my data", jsonData);
     setSameMovieMore(jsonData.results);
     setLoading(false);
   };
-  const getData3 = async () => {
-    const data = await fetch(apiLink3, options);
+  const getDataTrailerVideo = async () => {
+    const data = await fetch(apiLinkTrailerVideo, options);
     const jsonData = await data.json();
-    console.log("this is my data", jsonData);
+
     setPlayTrailer(jsonData);
   };
-  console.log("movieDetail", movieDetail);
-  console.log("movieDirector", movieDirector);
-  console.log("loading", loading);
-  console.log("SameMovieMore", sameMovieMore);
-  console.log("playTrailer", playTrailer);
 
   useEffect(() => {
-    getData();
+    getDataMovieMore();
   }, [id]);
 
   useEffect(() => {
-    getData1();
+    getDataTeamInf();
   }, [id]);
 
   useEffect(() => {
-    getData2();
+    getDataSimilarMovie();
   }, [id]);
   useEffect(() => {
-    getData3();
+    getDataTrailerVideo();
   }, [id]);
   if (loading) {
     return (
@@ -145,7 +137,7 @@ export default function MovieDetail() {
             >
               <div className="w-[997px] h-[651px] mb-80 ">
                 <iframe
-                  src={`https://www.youtube.com/embed/${playTrailer[0]?.key}`}
+                  src={`https://www.youtube.com/embed/${playTrailer.results[0]?.key}`}
                   width="997px"
                   height="651px"
                   allowFullScreen

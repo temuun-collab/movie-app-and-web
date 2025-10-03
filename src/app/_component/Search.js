@@ -2,15 +2,15 @@ import { useRouter } from "next/navigation";
 export const Search = (props) => {
   const { imgSrc, title, rating, movieId, runtime } = props;
   const router = useRouter();
-  console.log("this is movieId", movieId);
+
   const handleMovieClick = () => {
     router.replace(`/movie-detail/${movieId}`);
     ``;
   };
   return (
-    <div className="w-[557px] flex justify-center items-center max-h-fit">
+    <div>
       <div
-        className="w-[553px] h-[116px] m-[8px]"
+        className="w-[553px] m-[8px]"
         style={{ cursor: "pointer" }}
         onClick={handleMovieClick}
       >
@@ -31,7 +31,7 @@ export const Search = (props) => {
               </div>
             </div>
             <div className="flex justify-between">
-              <p className="text-[14px] text-black">{runtime}min</p>
+              <p className="text-[14px] text-black">{runtime}</p>
               <button className="w-[120px] h-[36px] text-black flex justify-center items-center">
                 See more
                 <img src="./vector.png" className="w-[9px] h-[9px]" />
@@ -40,7 +40,7 @@ export const Search = (props) => {
           </div>
         </div>
       </div>
-      <hr className="w-[553px] h-0.5 bg-gray-100 border-0 " />
+      <hr className="w-[549px] h-0.5 bg-gray-100 border-0 mb-3" />
     </div>
   );
 };

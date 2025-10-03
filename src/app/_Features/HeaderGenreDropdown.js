@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Genre } from "../_component/Genre";
 import { Allan } from "next/font/google";
+import { Search } from "../_component/Search";
 const apiLink = `https://api.themoviedb.org/3/genre/movie/list?language=en`;
 const options = {
   method: "GET",
@@ -13,20 +14,39 @@ const options = {
 export const HeaderGenreDropdown = (props) => {
   const [allGenre, setAllGenre] = useState([]);
   const [genre, setGenre] = useState(false);
+  const [searchList, setSearchList] = useState([]);
+  const [searchValue, setSearchValue] = useState();
+
+  const [page, setPage] = useState(1);
+  const apiLinkSearchMovieMore = `https://api.themoviedb.org/3/search/movie?query=${searchValue}&language=en-US&page=1`;
   const activeButtonGenre = () => {
     setGenre(!genre);
+  };
+  const handleInputValue = (e) => {
+    setSearchValue(e.target.value);
+  };
+  const handleClickButton = () => {
+    setShowTrailer(!showTrailer);
   };
   const getData = async () => {
     const data = await fetch(apiLink, options);
     const jsonData = await data.json();
     setAllGenre(jsonData.genres);
-    // console.log("this is", jsonData);
+  };
+  const getDataSearchMovieMore = async () => {
+    const data = await fetch(apiLinkSearchMovieMore, options);
+    const jsonData = await data.json();
+    setSearchList(jsonData.results);
   };
 
-  console.log("allGenre", allGenre);
   useEffect(() => {
     getData();
   }, []);
+  useEffect(() => {
+    getDataSearchMovieMore();
+  }, [searchValue]);
+
+  console.log(searchList, "asdasdasd");
 
   return (
     <div className="flex gap-[12px] relative">
@@ -55,6 +75,21 @@ export const HeaderGenreDropdown = (props) => {
           </div>
         </div>
       )}
+      {searchList && (
+        <div className="w-[557px] flex-col flex m-8  absolute bg-white z-10 mt-10 border-1 border-gray-100 rounded-md overflow-y-scroll max-h-[600px]">
+          {searchList.map((movie, index) => {
+            return (
+              <Search
+                key={index}
+                imgSrc={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                rating={movie.vote_average}
+                title={movie.title}
+                runtime={movie.release_date}
+              />
+            );
+          })}
+        </div>
+      )}
       <div
         className="w-[379px] h-[36px] flex gap-[10px] rounded-md border-1 border-gray-200  items-center  max-sm:w-[36px] max-sm:h-[36px] max-sm:flex max-sm:justify-between"
         style={{ paddingLeft: "5px" }}
@@ -66,6 +101,7 @@ export const HeaderGenreDropdown = (props) => {
         <input
           className="w-[350px] h-[36px] g-[10px] text-black max-sm:hidden"
           placeholder="Search.."
+          onChange={handleInputValue}
         />
       </div>
     </div>

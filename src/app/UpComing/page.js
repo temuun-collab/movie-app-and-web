@@ -111,8 +111,8 @@ export default function UpComing() {
               className="w-[88px] h-[40px] flex justify-center items-center text-black"
               onClick={handleAddpage}
               style={{
-                border: page == "page" ? "1px" : "none",
-                borderColor: page == "page" ? "gray" : "none",
+                border: page == "" ? "1px" : "none",
+                borderColor: page == "" ? "gray" : "none",
               }}
             >
               Next

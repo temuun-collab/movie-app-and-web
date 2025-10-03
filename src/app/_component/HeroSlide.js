@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useParams } from "next/navigation";
-import { useEffect } from "react";
 
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 const options = {
   method: "GET",
   headers: {
@@ -11,30 +11,29 @@ const options = {
   },
 };
 export const HeroSlide = (props) => {
-  const { imgSrc, title, description, rate, button, beforeButton } = props;
+  const { imgSrc, title, description, rate, button, beforeButton, movieId } =
+    props;
   const [showTrailer, setShowTrailer] = useState(false);
   const [playTrailer, setPlayTrailer] = useState([]);
-  const param = useParams();
 
-  const { id } = param;
-  const apiLink = `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`;
-  console.log("this is id", id);
+  const apiLink = `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`;
+
   const handleClickButton = () => {
     setShowTrailer(!showTrailer);
   };
   const getData = async () => {
     const data = await fetch(apiLink, options);
     const jsonData = await data.json();
-    console.log("this is my data", jsonData);
-    setPlayTrailer(jsonData.results);
+
+    setPlayTrailer(jsonData);
   };
   useEffect(() => {
     getData();
-  }, [id]);
-  console.log("playTrailer", playTrailer);
+  }, [movieId]);
+
   return (
     <>
-      <div className="w-[1440px] h-[600px] max-sm:w-[430px] max-sm:h-[246px] ">
+      <div className="w-[1440px] h-[600px] max-sm:w-[430px] max-sm:h-[246px] overflow-hidden">
         <div className=" flex gap-5 relative max-sm:flex max-sm:flex-col">
           <img
             src={imgSrc}
@@ -68,11 +67,10 @@ export const HeroSlide = (props) => {
               </div>
               <div className="mt-5">
                 <button
-                  className="w-[145px] h-[40px] bg-white rounded-md gap-[8px] text-black  justify-center items-center flex"
+                  className="w-[145px] h-[40px] bg-white rounded-md gap-[8px] text-black  justify-center items-center flex hover:scale-[0.9] cursor-pointer"
                   onClick={handleClickButton}
                 >
                   <img src="./trailer.png" className="w-[9px] h-[12px]" />
-                  {/* <DownIcon /> */}
                   Watch trailer
                 </button>
               </div>
@@ -85,18 +83,18 @@ export const HeroSlide = (props) => {
 
         {showTrailer && (
           <div
-            className="flex w-[100vw]  justify-center items-center absolute"
+            className="flex w-[100vw]  -z-1 justify-center items-center absolute"
             onClick={() => {
               setShowTrailer(false);
             }}
           >
             <div className="w-[997px] h-[651px]">
               <iframe
-                src={`https://www.youtube.com/embed/${playTrailer}`}
+                src={`https://www.youtube.com/embed/${playTrailer.results[0]?.key}`}
                 width="997px"
                 height="651px"
                 allowFullScreen
-                className="absolute z-10 "
+                className="absolute -z-1 "
               ></iframe>
             </div>
           </div>

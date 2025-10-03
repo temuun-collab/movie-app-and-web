@@ -32,8 +32,6 @@ export const HeroSection = (props) => {
     setHeroSectionData(jsonData.results);
     setLoading(false);
   };
-  console.log("loading", loading);
-  console.log("heroSectionData", heroSectionData);
 
   useEffect(() => {
     getData();
@@ -61,13 +59,14 @@ export const HeroSection = (props) => {
                   description={movie.overview}
                   button={
                     <button
-                      className="w-[40px] h-[40px] bg-[#F4F4F5] rounded-full flex justify-center items-center "
+                      className="w-[40px] h-[40px] hover:scale-[0.9] cursor-pointer bg-[#F4F4F5] rounded-full flex justify-center items-center "
                       onClick={nextActiveButton}
                     >
                       <img src="./HeroVector.png" className="w-[4px] h-[8px]" />
                     </button>
                   }
                   rate={movie.vote_average}
+                  movieId={movie.id}
                 />
               );
             })}
@@ -81,7 +80,7 @@ export const HeroSection = (props) => {
                   description={movie.overview}
                   button={
                     <button
-                      className="w-[40px] h-[40px] bg-[#F4F4F5] rounded-full flex justify-center items-center "
+                      className="w-[40px] h-[40px] hover:scale-[0.9] cursor-pointer bg-[#F4F4F5] rounded-full flex justify-center items-center "
                       onClick={nextActiveButton}
                     >
                       <img src="./HeroVector.png" className="w-[4px] h-[8px]" />
@@ -90,12 +89,13 @@ export const HeroSection = (props) => {
                   rate={movie.vote_average}
                   beforeButton={
                     <button
-                      className="w-[40px] h-[40px] bg-[#F4F4F5] rounded-full flex justify-center items-center "
+                      className="w-[40px] h-[40px] hover:scale-[0.9] cursor-pointer bg-[#F4F4F5] rounded-full flex justify-center items-center "
                       onClick={backActiveButton}
                     >
                       <img src="./backVector.png" className="w-[4px] h-[8px]" />
                     </button>
                   }
+                  movieId={movie.id}
                 />
               );
             })}
@@ -109,13 +109,14 @@ export const HeroSection = (props) => {
                   description={movie.overview}
                   beforeButton={
                     <button
-                      className="w-[40px] h-[40px] bg-[#F4F4F5] rounded-full flex justify-center items-center "
+                      className="w-[40px] h-[40px] bg-[#F4F4F5] rounded-full flex justify-center items-center hover:scale-[0.9] cursor-pointer"
                       onClick={backActiveButton}
                     >
                       <img src="./backVector.png" className="w-[4px] h-[8px]" />
                     </button>
                   }
                   rate={movie.vote_average}
+                  movieId={movie.id}
                 />
               );
             })}
