@@ -27,7 +27,7 @@ export default function MovieDetail() {
   const apiLinkTeamInf = `https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`;
   const apiLinkSimilarMovie = `https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=1`;
   const apiLinkTrailerVideo = `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`;
-  console.log("this is id", id);
+
   const handleClickButton = () => {
     setShowTrailer(!showTrailer);
   };
@@ -196,7 +196,7 @@ export default function MovieDetail() {
                   <p className="font-bold text-bold text-[16px] text-black text-700">
                     Director
                   </p>
-                  {movieDirector?.crew.slice(0, 1).map((item, index) => {
+                  {movieDirector?.crew?.slice(0, 1).map((item, index) => {
                     return (
                       <p
                         key={index}
@@ -212,7 +212,7 @@ export default function MovieDetail() {
                   <p className="font-bold text-bold text-[16px] text-black text-700">
                     Writers
                   </p>
-                  {movieDirector?.crew.slice(2, 5).map((item, index) => {
+                  {movieDirector?.crew?.slice(2, 5).map((item, index) => {
                     return (
                       <p
                         key={index}
@@ -228,7 +228,7 @@ export default function MovieDetail() {
                   <p className="font-bold text-bold text-[16px] text-black text-700">
                     Stars
                   </p>
-                  {movieDirector?.crew.slice(6, 9).map((item, index) => {
+                  {movieDirector?.crew?.slice(6, 9).map((item, index) => {
                     return (
                       <p
                         key={index}

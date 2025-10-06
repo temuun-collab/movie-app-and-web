@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+
 const options = {
   method: "GET",
   headers: {
@@ -33,7 +33,7 @@ export const HeroSlide = (props) => {
 
   return (
     <>
-      <div className="w-[1440px] h-[600px] max-sm:w-[430px] max-sm:h-[246px] overflow-hidden">
+      <div className="w-[1440px] h-[600px] max-sm:w-[430px] max-sm:h-[246px] overflow-hidden ">
         <div className=" flex gap-5 relative max-sm:flex max-sm:flex-col">
           <img
             src={imgSrc}
@@ -43,7 +43,10 @@ export const HeroSlide = (props) => {
             {beforeButton}
           </div>
           <div className="flex justify-between w-[1350px]  max-sm:w-[430px] max-sm:h-[246px] max-sm:my-0 max-sm:ml-0  max-sm:flex max-sm:justify-center my-[170px] ml-[139px]">
-            <div className="flex flex-col gap-[16px]">
+            <div
+              className="flex flex-col gap-[16px] "
+              style={{ zIndex: playTrailer === "" ? "-1" : "0" }}
+            >
               <div className="flex flex-col max-sm:flex-row max-sm:w-[430px] max-sm:pl-[10px]">
                 <div className="max-sm:flex max-sm:flex-col">
                   <p className="text-[16px] text-white-600 max-sm:text-black max-sm:text-[14px]">
@@ -74,31 +77,30 @@ export const HeroSlide = (props) => {
                   Watch trailer
                 </button>
               </div>
+              {showTrailer && (
+                <div
+                  className="flex w-[1350px] justify-center items-center absolute -z-1"
+                  onClick={() => {
+                    setShowTrailer(false);
+                  }}
+                >
+                  <div className="w-[997px] h-[651px] mr-50 ">
+                    <iframe
+                      src={`https://www.youtube.com/embed/${playTrailer.results[0]?.key}`}
+                      width="997px"
+                      height="651px"
+                      allowFullScreen
+                      className="absolute z-10"
+                    ></iframe>
+                  </div>
+                </div>
+              )}
             </div>
             <div className="mt-[120px] mb-[30px] max-sm:mt-0 max-sm:mb-0 max-sm:mb-50px max-sm:mr-30px">
               {button}
             </div>
           </div>
         </div>
-
-        {showTrailer && (
-          <div
-            className="flex w-[100vw]  -z-1 justify-center items-center absolute"
-            onClick={() => {
-              setShowTrailer(false);
-            }}
-          >
-            <div className="w-[997px] h-[651px]">
-              <iframe
-                src={`https://www.youtube.com/embed/${playTrailer.results[0]?.key}`}
-                width="997px"
-                height="651px"
-                allowFullScreen
-                className="absolute -z-1 "
-              ></iframe>
-            </div>
-          </div>
-        )}
       </div>
     </>
   );

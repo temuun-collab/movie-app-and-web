@@ -15,16 +15,22 @@ const options = {
 export default function UpComing() {
   const [upcomingMoviesData, setUpcomingMoviesData] = useState([]);
   const [page, setPage] = useState(1);
+  const [isNextClick, setIsNextClick] = useState(false);
+  const [isBackClick, setIsBackClick] = useState(false);
   const apiLink = `https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=${page}`;
 
   const handleAddpage = () => {
     setPage(page + 1);
+    setIsNextClick(true);
+    setIsBackClick(false);
   };
   const handleBeforePage = () => {
     if (page === 1) {
       return;
     } else {
       setPage(page - 1);
+      setIsNextClick(false);
+      setIsBackClick(true);
     }
   };
   const getData = async () => {
@@ -32,8 +38,6 @@ export default function UpComing() {
     const jsonData = await data.json();
     setUpcomingMoviesData(jsonData.results);
   };
-
-  console.log("upcomingMoviesData", upcomingMoviesData);
 
   useEffect(() => {
     getData();
@@ -81,8 +85,12 @@ export default function UpComing() {
         <div className="w-[1280px] h-[40px] flex justify-end">
           <div className="w-[382px] h-[40px] flex flex-row gap-[3px]">
             <button
-              className="w-[114px] h-[40px] flex justify-center items-center text-[#09090B]"
+              className="w-[114px] h-[40px] flex justify-center items-center text-[#09090B] rounded-md"
               onClick={handleBeforePage}
+              style={{
+                border: isBackClick ? "1px solid black" : "none",
+                color: isBackClick ? "black" : "gray",
+              }}
             >
               <img src="./paginationVector" className="w-[5px] h-[5px]" />
               Previous
@@ -90,13 +98,13 @@ export default function UpComing() {
             <div className="w-[172px] h-[40px] flex flex-row gap-[3px]">
               <button
                 className="w-[40px] h-[40px] flex justify-center items-center text-black text-[14px] rounded-md "
-                style={{ border: page == "page===1" ? "1px" : "none" }}
+                style={{ border: isBackClick ? "1px solid black" : "none" }}
               >
                 1
               </button>
               <button
                 className="w-[40px] h-[40px] flex justify-center items-center text-black text-[14px] rounded-md  "
-                style={{ border: page == "page===2" ? "1px" : "none" }}
+                style={{ border: isNextClick ? "1px solid black" : "none" }}
               >
                 2
               </button>
@@ -108,11 +116,11 @@ export default function UpComing() {
               </button>
             </div>
             <button
-              className="w-[88px] h-[40px] flex justify-center items-center text-black"
+              className="w-[88px] h-[40px] flex justify-center items-center text-black rounded-md"
               onClick={handleAddpage}
               style={{
-                border: page == "" ? "1px" : "none",
-                borderColor: page == "" ? "gray" : "none",
+                border: isNextClick ? "1px solid black" : "none",
+                color: isNextClick ? "black" : "gray",
               }}
             >
               Next

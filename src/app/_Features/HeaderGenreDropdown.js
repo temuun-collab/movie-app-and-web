@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Genre } from "../_component/Genre";
-import { Allan } from "next/font/google";
 import { Search } from "../_component/Search";
 const apiLink = `https://api.themoviedb.org/3/genre/movie/list?language=en`;
 const options = {
@@ -25,9 +24,7 @@ export const HeaderGenreDropdown = (props) => {
   const handleInputValue = (e) => {
     setSearchValue(e.target.value);
   };
-  const handleClickButton = () => {
-    setShowTrailer(!showTrailer);
-  };
+
   const getData = async () => {
     const data = await fetch(apiLink, options);
     const jsonData = await data.json();
@@ -43,10 +40,9 @@ export const HeaderGenreDropdown = (props) => {
     getData();
   }, []);
   useEffect(() => {
-    getDataSearchMovieMore();
+    if (!searchValue || searchValue.trim() === "");
+    getDataSearchMovieMore([]);
   }, [searchValue]);
-
-  console.log(searchList, "asdasdasd");
 
   return (
     <div className="flex gap-[12px] relative">
@@ -58,7 +54,12 @@ export const HeaderGenreDropdown = (props) => {
         <p className="w-[41px] h-[20px] text-[14px] text-black ">Genre</p>
       </button>
       {genre && (
-        <div className="absolute mt-10 w-[577px] h-[333px] bg-white border border-gray-100 rounded-md shadow-lg z-50">
+        <div
+          className="absolute mt-10 w-[577px] h-[333px] bg-white border border-gray-100 rounded-md shadow-lg z-50"
+          onClick={() => {
+            setGenre(false);
+          }}
+        >
           <div className="flex flex-col m-5">
             <div className="w-[213px] h-[60px]">
               <h3 className="text-[24px] text-black">Genres</h3>
@@ -70,13 +71,15 @@ export const HeaderGenreDropdown = (props) => {
           </div>
           <div className="grid grid-cols-5 gap-[10px] m-5">
             {allGenre?.map((genre, index) => {
-              return <Genre key={index} title={genre.name} />;
+              return (
+                <Genre key={index} title={genre.name} movieId={genre.id} />
+              );
             })}
           </div>
         </div>
       )}
       {searchList && (
-        <div className="w-[557px] flex-col flex m-8  absolute bg-white z-10 mt-10 border-1 border-gray-100 rounded-md overflow-y-scroll max-h-[600px]">
+        <div className="w-[557px] flex-col flex m-8  absolute bg-white z-10 mt-10  border-gray-100 rounded-md overflow-y-scroll max-h-[600px]">
           {searchList.map((movie, index) => {
             return (
               <Search
@@ -85,6 +88,7 @@ export const HeaderGenreDropdown = (props) => {
                 rating={movie.vote_average}
                 title={movie.title}
                 runtime={movie.release_date}
+                movieId={movie.id}
               />
             );
           })}

@@ -9,7 +9,7 @@ export const MovieCard = (props) => {
   };
   return (
     <div
-      className="w-[229px] h-[439px] flex flex-col hover:scale-[1.1] max-sm:w-[157px] "
+      className="w-[229px] h-[439px] flex flex-col  max-sm:w-[157px] "
       style={{ cursor: "pointer" }}
       onClick={handleMovieClick}
     >

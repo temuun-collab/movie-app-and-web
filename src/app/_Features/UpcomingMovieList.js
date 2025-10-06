@@ -57,18 +57,6 @@ export const UpcomingMovieList = (props) => {
             );
           })}
         </div>
-        {/* <div className="flex w-[1277px] gap-[30px] max-sm:hidden">
-          {upcomingMoviesData.slice(5, 10).map((movie, index) => {
-            return (
-              <MovieCard
-                key={index}
-                title={movie.title}
-                imgSrc={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-                rating={movie.rating}
-              />
-            );
-          })}
-        </div> */}
       </div>
     </div>
   );
