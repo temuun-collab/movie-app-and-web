@@ -77,18 +77,23 @@ export const HeaderGenreDropdown = (props) => {
             <hr className="w-[537px] mt-3" />
           </div>
           <div className="grid grid-cols-5 gap-[10px] m-5">
-            {allGenre?.map((genre) => {
-              return <Genre title={genre.name} movieId={genre.id} />;
+            {allGenre?.map((genre, index) => {
+              return (
+                <Genre key={index} title={genre.name} movieId={genre.id} />
+              );
             })}
           </div>
         </div>
       )}
       {searchValue.length > 0 && (
         <div className="w-[557px] flex-col flex m-8  absolute bg-white z-10 mt-10  border-gray-100 rounded-md overflow-y-scroll max-h-[600px]">
-          {searchList.map((movie) => {
+          {searchList.map((movie, index) => {
             if (loading) {
               return (
-                <div className=" text-black w-[553px] m-[8px] h-[128px] flex justify-center items-center gap-10">
+                <div
+                  key={index}
+                  className=" text-black w-[553px] m-[8px] h-[128px] flex justify-center items-center gap-10"
+                >
                   loading..
                 </div>
               );
