@@ -79,16 +79,16 @@ export const HeroSlide = (props) => {
               </div>
               {showTrailer && (
                 <div
-                  className="flex w-[1350px] justify-center items-center absolute -z-1"
+                  className="flex w-[100vh] h-[100vh] justify-center absolute -z-1"
                   onClick={() => {
                     setShowTrailer(false);
                   }}
                 >
-                  <div className="w-[997px] h-[651px] mr-50 ">
+                  <div className="w-[100vh] h-[100vh] mb-80 ml-50">
                     <iframe
                       src={`https://www.youtube.com/embed/${playTrailer.results[0]?.key}`}
-                      width="997px"
-                      height="651px"
+                      width="697px"
+                      height="401px"
                       allowFullScreen
                       className="absolute z-10"
                     ></iframe>

@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { Genre } from "../_component/Genre";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 const apiLink = `https://api.themoviedb.org/3/genre/movie/list?language=en`;
 const options = {
   method: "GET",
@@ -13,12 +15,17 @@ export const HeaderGenreDropdown = (props) => {
   const [allGenre, setAllGenre] = useState([]);
   const [genre, setGenre] = useState(false);
   const [searchList, setSearchList] = useState([]);
-  const [searchValue, setSearchValue] = useState();
-
+  const [searchValue, setSearchValue] = useState("");
+  const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const apiLinkSearchMovieMore = `https://api.themoviedb.org/3/search/movie?query=${searchValue}&language=en-US&page=1`;
   const activeButtonGenre = () => {
     setGenre(!genre);
+  };
+  const router = useRouter();
+  const handleMovieClick = () => {
+    router.replace(`/search/${searchValue}`);
+    ``;
   };
   const handleInputValue = (e) => {
     setSearchValue(e.target.value);
@@ -30,16 +37,17 @@ export const HeaderGenreDropdown = (props) => {
     setAllGenre(jsonData.genres);
   };
   const getDataSearchMovieMore = async () => {
+    setLoading(true);
     const data = await fetch(apiLinkSearchMovieMore, options);
     const jsonData = await data.json();
     setSearchList(jsonData.results);
+    setLoading(false);
   };
 
   useEffect(() => {
     getData();
   }, []);
   useEffect(() => {
-    if (!searchValue || searchValue.trim() === "") return;
     getDataSearchMovieMore();
   }, [searchValue]);
 
@@ -69,23 +77,34 @@ export const HeaderGenreDropdown = (props) => {
             <hr className="w-[537px] mt-3" />
           </div>
           <div className="grid grid-cols-5 gap-[10px] m-5">
-            {allGenre?.map((genre, index) => {
-              return (
-                <Genre key={index} title={genre.name} movieId={genre.id} />
-              );
+            {allGenre?.map((genre) => {
+              return <Genre title={genre.name} movieId={genre.id} />;
             })}
           </div>
         </div>
       )}
-      {searchList && (
+      {searchValue.length > 0 && (
         <div className="w-[557px] flex-col flex m-8  absolute bg-white z-10 mt-10  border-gray-100 rounded-md overflow-y-scroll max-h-[600px]">
-          {searchList.map((movie, index) => {
+          {searchList.map((movie) => {
+            if (loading) {
+              return (
+                <div className=" text-black w-[553px] m-[8px] h-[128px] flex justify-center items-center gap-10">
+                  loading..
+                </div>
+              );
+            }
+            if (searchList.length === 0) {
+              return (
+                <div className=" text-black w-[553px] m-[8px] h-[128px] flex justify-center items-center gap-10">
+                  not results found
+                </div>
+              );
+            }
             return (
               <div>
                 <div
                   className="w-[553px] m-[8px]"
                   style={{ cursor: "pointer" }}
-                  key={index}
                 >
                   <div className="flex flex-row gap-5">
                     <img
@@ -130,6 +149,14 @@ export const HeaderGenreDropdown = (props) => {
               </div>
             );
           })}
+          <div className="flex justify-start mb-3">
+            <button
+              className="w-[212px] h-[40px] bg-white flex justify-center items-center text-black "
+              onClick={handleMovieClick}
+            >
+              See all results for ""
+            </button>
+          </div>
         </div>
       )}
       <div
@@ -144,6 +171,7 @@ export const HeaderGenreDropdown = (props) => {
           className="w-[350px] h-[36px] g-[10px] text-black max-sm:hidden"
           placeholder="Search.."
           onChange={handleInputValue}
+          value={searchValue}
         />
       </div>
     </div>

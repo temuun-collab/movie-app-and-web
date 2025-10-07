@@ -38,7 +38,9 @@ export const HeroSection = (props) => {
   }, []);
   if (loading) {
     return (
-      <div className="w-[1440px] h-[600px] bg-[#F4F4F5] max-sm:w-[430px] max-sm:bg-[#F4F4F5]"></div>
+      <div className="flex justify-center items-center">
+        <div className="w-[1440px] h-[600px] bg-[#F4F4F5] max-sm:w-[430px] max-sm:bg-[#F4F4F5]"></div>
+      </div>
     );
   }
 
