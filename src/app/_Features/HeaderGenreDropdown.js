@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Genre } from "../_component/Genre";
-import { Search } from "../_component/Search";
 const apiLink = `https://api.themoviedb.org/3/genre/movie/list?language=en`;
 const options = {
   method: "GET",
@@ -40,8 +39,8 @@ export const HeaderGenreDropdown = (props) => {
     getData();
   }, []);
   useEffect(() => {
-    if (!searchValue || searchValue.trim() === "");
-    getDataSearchMovieMore([]);
+    if (!searchValue || searchValue.trim() === "") return;
+    getDataSearchMovieMore();
   }, [searchValue]);
 
   return (
@@ -82,14 +81,53 @@ export const HeaderGenreDropdown = (props) => {
         <div className="w-[557px] flex-col flex m-8  absolute bg-white z-10 mt-10  border-gray-100 rounded-md overflow-y-scroll max-h-[600px]">
           {searchList.map((movie, index) => {
             return (
-              <Search
-                key={index}
-                imgSrc={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                rating={movie.vote_average}
-                title={movie.title}
-                runtime={movie.release_date}
-                movieId={movie.id}
-              />
+              <div>
+                <div
+                  className="w-[553px] m-[8px]"
+                  style={{ cursor: "pointer" }}
+                  key={index}
+                >
+                  <div className="flex flex-row gap-5">
+                    <img
+                      src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                      className="w-[67px] h-[100px] rounded-md"
+                    />
+                    <div className="flex flex-col w-[454px] h-[99px] gap-5">
+                      <div className="flex justify-start w-[454px] h-[51px]">
+                        <div className="flex flex-col">
+                          <p className="text-[20px] text-black text-600 font-bold">
+                            {movie.title}
+                          </p>
+                          <div className="flex">
+                            <img
+                              src="/star.png"
+                              className="w-[13px] h-[12px]"
+                            />
+                            <p className="text-[14px] text-black max-sm:w-[141px] max-sm:h-[16px]">
+                              {movie.vote_average}/10
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex justify-between">
+                        <p className="text-[14px] text-black">
+                          {movie.release_date}
+                        </p>
+                        <Link href={`/movie-detail/${movie.id}`}>
+                          <button className="w-[120px] h-[36px] text-black flex justify-center items-center">
+                            See more
+                            <img
+                              src="./vector.png"
+                              className="w-[9px] h-[9px]"
+                            />
+                          </button>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr className="w-[549px] h-0.5 bg-gray-100 border-0 mb-3" />
+              </div>
             );
           })}
         </div>
