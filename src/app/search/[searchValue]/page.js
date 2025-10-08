@@ -36,7 +36,7 @@ export default function Page() {
     const jsonData = await data.json();
     setAllGenre(jsonData.genres);
   };
-  const genreName = searchList.filter((item) => item.id == searchValue);
+  // const genreName = searchList.filter((item) => item.id == searchValue);
   const handleAddpage = () => {
     setPage(page + 1);
     setIsNextClick(true);
@@ -68,7 +68,7 @@ export default function Page() {
         <div className="flex flex-col">
           {searchList && (
             <div className="flex flex-col w-[806px]  max-sm:w-[400px] text-black text-[20px] font-bold">
-              results for "{genreName[0]?.name}"
+              results for "{searchValue}"
             </div>
           )}
           <div className="gap-5 grid grid-cols-4 w-[910px] max-sm:w-[350px] max-sm:grid max-sm:grid-cols-2">

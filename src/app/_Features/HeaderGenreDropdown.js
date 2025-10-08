@@ -100,25 +100,31 @@ export const HeaderGenreDropdown = (props) => {
             }
             if (searchList.length === 0) {
               return (
-                <div className=" text-black w-[553px] m-[8px] h-[128px] flex justify-center items-center gap-10">
+                <div
+                  className=" text-black w-[553px] m-[8px] h-[128px] flex justify-center items-center gap-10"
+                  key={index}
+                >
                   not results found
                 </div>
               );
             }
             return (
-              <div>
-                <div
-                  className="w-[553px] m-[8px]"
-                  style={{ cursor: "pointer" }}
-                >
-                  <div className="flex flex-row gap-5">
+              <div key={index}>
+                <div className="w-[553px] m-[8px]" key={index}>
+                  <div className="flex flex-row gap-5" key={index}>
                     <img
                       src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                       className="w-[67px] h-[100px] rounded-md"
                     />
-                    <div className="flex flex-col w-[454px] h-[99px] gap-5">
-                      <div className="flex justify-start w-[454px] h-[51px]">
-                        <div className="flex flex-col">
+                    <div
+                      className="flex flex-col w-[454px] h-[99px] gap-5"
+                      key={index}
+                    >
+                      <div
+                        className="flex justify-start w-[454px] h-[51px]"
+                        key={index}
+                      >
+                        <div className="flex flex-col" key={index}>
                           <p className="text-[20px] text-black text-600 font-bold">
                             {movie.title}
                           </p>
@@ -133,12 +139,12 @@ export const HeaderGenreDropdown = (props) => {
                           </div>
                         </div>
                       </div>
-                      <div className="flex justify-between">
+                      <div className="flex justify-between" key={index}>
                         <p className="text-[14px] text-black">
                           {movie.release_date}
                         </p>
                         <Link href={`/movie-detail/${movie.id}`}>
-                          <button className="w-[120px] h-[36px] text-black flex justify-center items-center">
+                          <button className="w-[120px] h-[36px] text-black flex justify-center items-center cursor-pointer hover:opacity-90">
                             See more
                             <img
                               src="./vector.png"
@@ -159,7 +165,7 @@ export const HeaderGenreDropdown = (props) => {
               className="w-[212px] h-[40px] bg-white flex justify-center items-center text-black "
               onClick={handleMovieClick}
             >
-              See all results for ""
+              See all results for "{searchValue}"
             </button>
           </div>
         </div>
