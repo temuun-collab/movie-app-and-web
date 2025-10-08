@@ -16,44 +16,39 @@ export const LoadingMovieMore = (props) => {
           <div className="w-[290px] h-[439px] bg-[#F4F4F5]"></div>
           <div className="w-[760px] h-[439px] bg-[#F4F4F5]"></div>
         </div>
-        <div className="flex w-[1080px] h-[271px]">
-          <div className="flex w-[423px] h-[20px]">
-            <button className="w-[77px] h-[20px] bg-[#F4F4F5] rounded-full"></button>
-            <button className="w-[77px] h-[20px] bg-[#F4F4F5] rounded-full"></button>
-            <button className="w-[77px] h-[20px] bg-[#F4F4F5] rounded-full"></button>
-          </div>
-          <div className="flex h-[40px] flex-col">
+        <div className="flex w-[1080px] h-[271px] gap-5 flex-col mt-5">
+          <div className="flex h-[40px] flex-col gap-5">
             <button className="w-[1080px] h-[22px] bg-[#F4F4F5] rounded-full"></button>
             <button className="w-[699px] h-[22px] bg-[#F4F4F5] rounded-full"></button>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col gap-5">
             <div className="flex gap-7">
               <button className="w-[64px] h-[28px] bg-[#F4F4F5] rounded-full"></button>
               <button className="w-[137px] h-[28px] bg-[#F4F4F5] rounded-full"></button>
             </div>
-            <hr className="w-[1080px] h-0.5 bg-gray-100 border-0 " />
+            <hr className="w-[1080px] h-0.5 bg-gray-100 border-0 gap-5" />
             <div className="flex gap-7">
               <button className="w-[64px] h-[28px] bg-[#F4F4F5] rounded-full"></button>
               <button className="w-[360px] h-[28px] bg-[#F4F4F5] rounded-full"></button>
             </div>
-            <hr className="w-[1080px] h-0.5 bg-gray-100 border-0 " />
+            <hr className="w-[1080px] h-0.5 bg-gray-100 border-0 gap-5" />
             <div className="flex gap-7">
               <button className="w-[64px] h-[28px] bg-[#F4F4F5] rounded-full"></button>
               <button className="w-[360px] h-[28px] bg-[#F4F4F5] rounded-full"></button>
             </div>
-            <hr className="w-[1080px] h-0.5 bg-gray-100 border-0 " />
+            <hr className="w-[1080px] h-0.5 bg-gray-100 border-0 gap-5" />
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col gap-5">
             <div className="flex justify-between">
               <button className="w-[250px] h-[32px] bg-[#F4F4F5] rounded-full"></button>
               <button className="w-[165px] h-[36px] bg-[#F4F4F5] rounded-full"></button>
             </div>
             <div className="flex gap-5">
-              <button className="w-[190px] h-[372px] bg-[#F4F4F5] rounded-full"></button>
-              <button className="w-[190px] h-[372px] bg-[#F4F4F5] rounded-full"></button>
-              <button className="w-[190px] h-[372px] bg-[#F4F4F5] rounded-full"></button>
-              <button className="w-[190px] h-[372px] bg-[#F4F4F5] rounded-full"></button>
-              <button className="w-[190px] h-[372px] bg-[#F4F4F5] rounded-full"></button>
+              <button className="w-[190px] h-[372px] bg-[#F4F4F5] rounded-md"></button>
+              <button className="w-[190px] h-[372px] bg-[#F4F4F5] rounded-md"></button>
+              <button className="w-[190px] h-[372px] bg-[#F4F4F5] rounded-md"></button>
+              <button className="w-[190px] h-[372px] bg-[#F4F4F5] rounded-md"></button>
+              <button className="w-[190px] h-[372px] bg-[#F4F4F5] rounded-md"></button>
             </div>
           </div>
         </div>

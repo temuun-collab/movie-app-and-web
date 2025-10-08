@@ -16,6 +16,8 @@ const options = {
 export default function MoreLikeMovie(props) {
   const [moreLikeMovie, setMoreLikeMovie] = useState([]);
   const [page, setPage] = useState(1);
+  const [isNextClick, setIsNextClick] = useState(false);
+  const [isBackClick, setIsBackClick] = useState(false);
   const searchParams = useSearchParams();
   const param = useParams();
   const { id } = param;
@@ -28,18 +30,21 @@ export default function MoreLikeMovie(props) {
 
   const handleAddpage = () => {
     setPage(page + 1);
+    setIsNextClick(true);
+    setIsBackClick(false);
   };
   const handleBeforePage = () => {
     if (page === 1) {
       return;
     } else {
       setPage(page - 1);
+      setIsNextClick(false);
+      setIsBackClick(true);
     }
   };
   const getData = async () => {
     const data = await fetch(apiLink, options);
     const jsonData = await data.json();
-    // console.log("this is json", jsonData);
 
     setMoreLikeMovie(jsonData.results);
   };
@@ -95,8 +100,12 @@ export default function MoreLikeMovie(props) {
         <div className="w-[1280px] h-[40px] flex justify-end">
           <div className="w-[382px] h-[40px] flex flex-row gap-[3px]">
             <button
-              className="w-[114px] h-[40px] flex justify-center items-center text-[#09090B]"
+              className="w-[114px] h-[40px] flex justify-center items-center text-[#09090B] rounded-md cursor-pointer"
               onClick={handleBeforePage}
+              style={{
+                border: isBackClick ? "1px solid black" : "none",
+                color: isBackClick ? "black" : "gray",
+              }}
             >
               <img src="./paginationVector" className="w-[5px] h-[5px]" />
               Previous
@@ -104,13 +113,13 @@ export default function MoreLikeMovie(props) {
             <div className="w-[172px] h-[40px] flex flex-row gap-[3px]">
               <button
                 className="w-[40px] h-[40px] flex justify-center items-center text-black text-[14px] rounded-md "
-                style={{ border: page == "page===1" ? "1px" : "none" }}
+                style={{ border: isBackClick ? "1px solid black" : "none" }}
               >
                 1
               </button>
               <button
                 className="w-[40px] h-[40px] flex justify-center items-center text-black text-[14px] rounded-md  "
-                style={{ border: page == "page===2" ? "1px" : "none" }}
+                style={{ border: isNextClick ? "1px solid black" : "none" }}
               >
                 2
               </button>
@@ -122,11 +131,11 @@ export default function MoreLikeMovie(props) {
               </button>
             </div>
             <button
-              className="w-[88px] h-[40px] flex justify-center items-center text-black"
+              className="w-[88px] h-[40px] flex justify-center items-center text-black cursor-pointer rounded-md"
               onClick={handleAddpage}
               style={{
-                border: page == "Next" ? "1px" : "none",
-                borderColor: page == "Next" ? "gray" : "none",
+                border: isNextClick ? "1px solid black" : "none",
+                color: isNextClick ? "black" : "gray",
               }}
             >
               Next

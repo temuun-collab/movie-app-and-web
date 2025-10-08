@@ -110,7 +110,7 @@ export default function MovieDetail() {
                   </p>
                 </div>
               </div>
-              <div className="flex flex-col gap-5 justify-center items-center mt-5 ">
+              <div className="flex flex-col justify-center items-center mt-5 ">
                 <p className="w-[250px] h-[16px] text-[12px] text-black">
                   {movieDetail.tagline}
                 </p>
@@ -163,7 +163,7 @@ export default function MovieDetail() {
                   style={{ zIndex: playTrailer === "" ? "-1" : "0" }}
                 >
                   <button
-                    className="rounded-full w-[40px] h-40px] bg-white flex justify-center items-center"
+                    className="rounded-full w-[40px] h-40px] bg-white flex justify-center items-center cursor-pointer"
                     onClick={handleClickButton}
                   >
                     <img className="w-[9px] h-[12px] " src="/vectorClick.png" />
@@ -245,7 +245,7 @@ export default function MovieDetail() {
                 <div className="flex justify-between w-[1080px] max-sm:w-[400px]">
                   <p className="text-[24px] text-black 0">More Like This</p>
                   <Link href={`/moreLikeMovie/${id}`}>
-                    <button className="w-[120px] h-[36px] text-black flex justify-center items-center">
+                    <button className="w-[120px] h-[36px] text-black flex justify-center items-center cursor-pointer">
                       See more
                       <img src="/vector.png" className="w-[9px] h-[9px]" />
                     </button>

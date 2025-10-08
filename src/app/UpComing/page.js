@@ -85,7 +85,7 @@ export default function UpComing() {
         <div className="w-[1280px] h-[40px] flex justify-end">
           <div className="w-[382px] h-[40px] flex flex-row gap-[3px]">
             <button
-              className="w-[114px] h-[40px] flex justify-center items-center text-[#09090B] rounded-md"
+              className="w-[114px] h-[40px] flex justify-center items-center text-[#09090B] rounded-md cursor-pointer"
               onClick={handleBeforePage}
               style={{
                 border: isBackClick ? "1px solid black" : "none",
@@ -116,7 +116,7 @@ export default function UpComing() {
               </button>
             </div>
             <button
-              className="w-[88px] h-[40px] flex justify-center items-center text-black rounded-md"
+              className="w-[88px] h-[40px] flex justify-center items-center text-black rounded-md cursor-pointer"
               onClick={handleAddpage}
               style={{
                 border: isNextClick ? "1px solid black" : "none",

@@ -55,7 +55,7 @@ export const HeaderGenreDropdown = (props) => {
     <div className="flex gap-[12px] relative">
       <button
         onClick={activeButtonGenre}
-        className="w-[97px] h-[36px] rounded-md border-1 g-[8px] bg-white flex gap-[8px] justify-center items-center max-sm:hidden"
+        className="w-[97px] h-[36px] rounded-md border-1 g-[8px] bg-white flex gap-[8px] justify-center items-center max-sm:hidden cursor-pointer"
       >
         <img className="w-[8px] h-[4px]" src="/logo1.png" />
         <p className="w-[41px] h-[20px] text-[14px] text-black ">Genre</p>
@@ -92,13 +92,13 @@ export const HeaderGenreDropdown = (props) => {
               return (
                 <div
                   key={index}
-                  className=" text-black w-[553px] m-[8px] h-[128px] flex justify-center items-center gap-10"
+                  className=" text-black w-[553px] m-[8px] bg-white h-[128px] flex justify-center items-center gap-10"
                 >
                   loading..
                 </div>
               );
             }
-            if (searchList.length === 0) {
+            if (!searchList || searchList.length === 0) {
               return (
                 <div
                   className=" text-black w-[553px] m-[8px] h-[128px] flex justify-center items-center gap-10"
@@ -109,22 +109,16 @@ export const HeaderGenreDropdown = (props) => {
               );
             }
             return (
-              <div key={index}>
-                <div className="w-[553px] m-[8px]" key={index}>
-                  <div className="flex flex-row gap-5" key={index}>
+              <div key={movie.id}>
+                <div className="w-[553px] m-[8px]">
+                  <div className="flex flex-row gap-5">
                     <img
                       src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                       className="w-[67px] h-[100px] rounded-md"
                     />
-                    <div
-                      className="flex flex-col w-[454px] h-[99px] gap-5"
-                      key={index}
-                    >
-                      <div
-                        className="flex justify-start w-[454px] h-[51px]"
-                        key={index}
-                      >
-                        <div className="flex flex-col" key={index}>
+                    <div className="flex flex-col w-[454px] h-[99px] gap-5">
+                      <div className="flex justify-start w-[454px] h-[51px]">
+                        <div className="flex flex-col">
                           <p className="text-[20px] text-black text-600 font-bold">
                             {movie.title}
                           </p>
@@ -139,7 +133,7 @@ export const HeaderGenreDropdown = (props) => {
                           </div>
                         </div>
                       </div>
-                      <div className="flex justify-between" key={index}>
+                      <div className="flex justify-between">
                         <p className="text-[14px] text-black">
                           {movie.release_date}
                         </p>
@@ -160,14 +154,16 @@ export const HeaderGenreDropdown = (props) => {
               </div>
             );
           })}
-          <div className="flex justify-start mb-3">
-            <button
-              className="w-[212px] h-[40px] bg-white flex justify-center items-center text-black "
-              onClick={handleMovieClick}
-            >
-              See all results for "{searchValue}"
-            </button>
-          </div>
+          {searchList.length > 1 && (
+            <div className="flex justify-start mb-3">
+              <button
+                className="w-[212px] h-[40px] bg-white flex justify-center items-center text-black "
+                onClick={handleMovieClick}
+              >
+                See all results for "{searchValue}"
+              </button>
+            </div>
+          )}
         </div>
       )}
       <div

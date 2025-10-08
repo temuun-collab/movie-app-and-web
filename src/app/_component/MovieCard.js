@@ -9,7 +9,7 @@ export const MovieCard = (props) => {
   };
   return (
     <div
-      className="w-[229px] h-[439px] flex flex-col  max-sm:w-[157px] "
+      className="w-[229px] h-[439px] flex flex-col  max-sm:w-[157px] hover:opacity-80"
       style={{ cursor: "pointer" }}
       onClick={handleMovieClick}
     >
@@ -17,7 +17,7 @@ export const MovieCard = (props) => {
         src={imgSrc}
         className="w-[229px] h-[340px] rounded-md max-sm:w-[157px] max-sm:h-[300px]"
       />
-      <div className="w-[229px] h-[95px] bg-gray-100 flex flex-col items-center justify-center rounded-md max-sm:w-[157px] max-sm:h-[76px]">
+      <div className="w-[229px] max-h-[95px] overflow-y-scroll bg-gray-100 flex flex-col items-center justify-center rounded-md max-sm:w-[157px] max-sm:h-[76px]">
         <div className="flex">
           <img src="/star.png" className="w-[16px] h-[16px]" />
           <p className="w-[193px] h-[23px] text-black max-sm:w-[141px] max-sm:h-[16px]">
