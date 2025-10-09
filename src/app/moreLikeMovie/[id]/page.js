@@ -52,11 +52,9 @@ export default function MoreLikeMovie(props) {
     setTotalResult(jsonData.total_result);
   };
 
-  console.log("moreLikeMovie", moreLikeMovie);
-
   useEffect(() => {
     getData();
-  }, [id]);
+  }, [id, page]);
   if (!id) {
     return <div>something wrong</div>;
   }
@@ -72,19 +70,17 @@ export default function MoreLikeMovie(props) {
         </div>
         <div className="flex flex-col gap-[30px]">
           <div className=" w-[1277px] gap-[30px]  grid grid-cols-5">
-            {
-              moreLikeMovie?.slice(0, 10).map((movie, index) => {
-                return (
-                  <MovieCard
-                    key={index}
-                    title={movie.title}
-                    imgSrc={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                    rating={movie.vote_average}
-                    movieId={movie.id}
-                  />
-                );
-              })}
-            
+            {moreLikeMovie?.slice(0, 10).map((movie, index) => {
+              return (
+                <MovieCard
+                  key={index}
+                  title={movie.title}
+                  imgSrc={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                  rating={movie.vote_average}
+                  movieId={movie.id}
+                />
+              );
+            })}
           </div>
         </div>
       </div>
@@ -104,7 +100,7 @@ export default function MoreLikeMovie(props) {
             </button>
             <div className="w-[172px] h-[40px] flex flex-row gap-[3px]">
               <button>{page - 1}</button>
-                  <button
+              <button
                 className="border-1 w-10 rounded-sm text-black"
                 style={{
                   borderColor: isBackClick ? "black" : "none",
@@ -115,7 +111,7 @@ export default function MoreLikeMovie(props) {
               </button>
               <button>{page + 1}</button>
               <button>...</button>
-                  <button>{totalPage}</button>
+              <button>{totalPage}</button>
             </div>
             <button
               className="w-[88px] h-[40px] flex justify-center items-center text-black cursor-pointer rounded-md"

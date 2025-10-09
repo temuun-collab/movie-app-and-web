@@ -33,7 +33,7 @@ export default function Page() {
     setTotalPage(jsonData.total_pages);
     setTotalResult(jsonData.total_results);
   };
-  
+
   const getDataGenres = async () => {
     const data = await fetch(apiLink, options);
     const jsonData = await data.json();
@@ -57,7 +57,7 @@ export default function Page() {
 
   useEffect(() => {
     getDataSearchMovieMore();
-  }, [searchValue]);
+  }, [searchValue, page]);
   useEffect(() => {
     getDataGenres();
   }, []);
@@ -75,20 +75,18 @@ export default function Page() {
             </div>
           )}
           <div className="gap-5 grid grid-cols-4 w-[910px] max-sm:w-[350px] max-sm:grid max-sm:grid-cols-2">
-            {
-              searchList.slice(0, 8).map((movie, index) => {
-                return (
-                  <MovieCard
-                    key={index}
-                    title={movie.title}
-                    imgSrc={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                    rating={movie.vote_average}
-                    movieId={movie.id}
-                    className={"w-[165px] h-[331px]"}
-                  />
-                );
-              })}
-            
+            {searchList.slice(0, 8).map((movie, index) => {
+              return (
+                <MovieCard
+                  key={index}
+                  title={movie.title}
+                  imgSrc={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                  rating={movie.vote_average}
+                  movieId={movie.id}
+                  className={"w-[165px] h-[331px]"}
+                />
+              );
+            })}
           </div>
           <div className="mt-5 mb-5 ">
             <div className="w-[806px] h-[40px] flex justify-end">
@@ -105,22 +103,19 @@ export default function Page() {
                   Previous
                 </button>
                 <div className="w-[172px] h-[40px] flex flex-row gap-[3px]">
-                  <button>
-                   {page-1}
-                  </button>
+                  <button>{page - 1}</button>
                   <button
-                className="border-1 w-10 rounded-sm text-black"
-                style={{
-                  borderColor: isBackClick ? "black" : "none",
-                  borderColor: isNextClick ? "black" : "none",
-                }}
-              >
-                {page}
-              </button>
+                    className="border-1 w-10 rounded-sm text-black"
+                    style={{
+                      borderColor: isBackClick ? "black" : "none",
+                      borderColor: isNextClick ? "black" : "none",
+                    }}
+                  >
+                    {page}
+                  </button>
                   <button>{page + 1}</button>
-              <button>...</button>
+                  <button>...</button>
                   <button>{totalPage}</button>
-                  
                 </div>
                 <button
                   className="w-[88px] h-[40px] flex justify-center items-center rounded-md"

@@ -11,8 +11,18 @@ const options = {
   },
 };
 export const HeroSlide = (props) => {
-  const { imgSrc, title, description, rate, button, beforeButton, movieId } =
-    props;
+  const {
+    imgSrc,
+    title,
+    description,
+    rate,
+    button,
+    beforeButton,
+    movieId,
+    buttonDot1,
+    buttonDot2,
+    buttonDot3,
+  } = props;
   const [showTrailer, setShowTrailer] = useState(false);
   const [playTrailer, setPlayTrailer] = useState([]);
 
@@ -27,13 +37,14 @@ export const HeroSlide = (props) => {
 
     setPlayTrailer(jsonData);
   };
+
   useEffect(() => {
     getData();
   }, [movieId]);
 
   return (
     <>
-      <div className="w-[1440px] h-[600px] max-sm:w-[430px] max-sm:h-[246px] overflow-hidden ">
+      <div className="w-[1440px] h-[600px] max-sm:w-[430px] overflow-hidden max-sm:overflow-auto max-sm:h-auto">
         <div className=" flex gap-5 relative max-sm:flex max-sm:flex-col">
           <img
             src={imgSrc}
@@ -45,9 +56,9 @@ export const HeroSlide = (props) => {
           <div className="flex justify-between w-[1350px]  max-sm:w-[430px] max-sm:h-[246px] max-sm:my-0 max-sm:ml-0  max-sm:flex max-sm:justify-center my-[170px] ml-[139px]">
             <div
               className="flex flex-col gap-[16px] "
-              style={{ zIndex: playTrailer === "" ? "-1" : "0" }}
+              // style={{ zIndex: playTrailer === "" ? "-1" : "0" }}
             >
-              <div className="flex flex-col max-sm:flex-row max-sm:w-[430px] max-sm:pl-[10px]">
+              <div className="flex flex-col max-sm:flex-row max-sm:pl-[10px]">
                 <div className="max-sm:flex max-sm:flex-col">
                   <p className="text-[16px] text-white-600 max-sm:text-black max-sm:text-[14px]">
                     Now Playing:
@@ -77,6 +88,11 @@ export const HeroSlide = (props) => {
                   Watch trailer
                 </button>
               </div>
+              <div className="flex gap-2">
+                <button>{buttonDot1}</button>
+                <button>{buttonDot2}</button>
+                <button>{buttonDot3}</button>
+              </div>
               {showTrailer && (
                 <div
                   className="flex w-[100vh] h-[100vh] justify-center absolute -z-1"
@@ -86,7 +102,11 @@ export const HeroSlide = (props) => {
                 >
                   <div className="w-[100vh] h-[100vh] mb-80 ml-50">
                     <iframe
-                      src={`https://www.youtube.com/embed/${playTrailer.results[0]?.key}`}
+                      src={
+                        playTrailer?.results?.length > 0
+                          ? `https://www.youtube.com/embed/${playTrailer.results[0]?.key}`
+                          : ""
+                      }
                       width="697px"
                       height="401px"
                       allowFullScreen

@@ -46,7 +46,7 @@ export default function Popular() {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [page]);
   return (
     <div>
       <Header />
@@ -59,7 +59,7 @@ export default function Popular() {
         </div>
         <div className="flex flex-col gap-[30px]">
           <div className=" w-[1277px] gap-[30px] grid grid-cols-5">
-            {
+            {popularMoviesData &&
               popularMoviesData.slice(0, 10).map((movie, index) => {
                 return (
                   <MovieCard
@@ -71,7 +71,6 @@ export default function Popular() {
                   />
                 );
               })}
-            
           </div>
         </div>
       </div>
@@ -91,7 +90,7 @@ export default function Popular() {
             </button>
             <div className="w-[172px] h-[40px] flex flex-row gap-[3px]">
               <button>{page - 1}</button>
-                  <button
+              <button
                 className="border-1 w-10 rounded-sm text-black"
                 style={{
                   borderColor: isBackClick ? "black" : "none",
@@ -102,7 +101,7 @@ export default function Popular() {
               </button>
               <button>{page + 1}</button>
               <button>...</button>
-                  <button>{totalPage}</button>
+              <button>{totalPage}</button>
             </div>
             <button
               className="w-[88px] h-[40px] flex justify-center items-center text-black rounded-md cursor-pointer"

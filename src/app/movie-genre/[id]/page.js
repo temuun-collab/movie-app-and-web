@@ -60,7 +60,7 @@ export default function MovieGenre(props) {
 
   useEffect(() => {
     getData();
-  }, [id]);
+  }, [id, page]);
   return (
     <div className="bg-white w-[100vw] flex flex-col gap-5 items-center">
       <Header />
@@ -93,20 +93,18 @@ export default function MovieGenre(props) {
             </div>
           )}
           <div className="gap-5 grid grid-cols-4 max-sm:w-[350px] max-sm:grid max-sm:grid-cols-2">
-            {
-              genres.slice(0, 12).map((movie, index) => {
-                return (
-                  <MovieCard
-                    key={index}
-                    title={movie.title}
-                    imgSrc={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                    rating={movie.vote_average}
-                    movieId={movie.id}
-                    className={"w-[165px] h-[331px]"}
-                  />
-                );
-              })}
-            
+            {genres.slice(0, 12).map((movie, index) => {
+              return (
+                <MovieCard
+                  key={index}
+                  title={movie.title}
+                  imgSrc={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                  rating={movie.vote_average}
+                  movieId={movie.id}
+                  className={"w-[165px] h-[331px]"}
+                />
+              );
+            })}
           </div>
           <div className="mt-5 mb-5 ">
             <div className="w-[806px] h-[40px] flex justify-end">
@@ -125,18 +123,17 @@ export default function MovieGenre(props) {
                 <div className="w-[172px] h-[40px] flex flex-row gap-[3px]">
                   <button>{page - 1}</button>
                   <button
-                className="border-1 w-10 rounded-sm text-black"
-                style={{
-                  borderColor: isBackClick ? "black" : "none",
-                  borderColor: isNextClick ? "black" : "none",
-                }}
-              >
-                {page}
-              </button>
-              <button>{page + 1}</button>
-              <button>...</button>
+                    className="border-1 w-10 rounded-sm text-black"
+                    style={{
+                      borderColor: isBackClick ? "black" : "none",
+                      borderColor: isNextClick ? "black" : "none",
+                    }}
+                  >
+                    {page}
+                  </button>
+                  <button>{page + 1}</button>
+                  <button>...</button>
                   <button>{totalPage}</button>
-                 
                 </div>
                 <button
                   className="w-[88px] h-[40px] flex justify-center items-center rounded-md  cursor-pointer"

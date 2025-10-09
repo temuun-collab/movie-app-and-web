@@ -14,7 +14,7 @@ const options = {
 };
 export default function UpComing() {
   const [upcomingMoviesData, setUpcomingMoviesData] = useState([]);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState([]);
   const [totalPage, setTotalPage] = useState();
   const [totalResult, setTotalResult] = useState();
   const [isNextClick, setIsNextClick] = useState(false);
@@ -45,20 +45,20 @@ export default function UpComing() {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [page]);
   return (
-    <div>
+    <div className="bg-white">
       <Header />
       <div
-        className="w-[100vw] flex flex-col gap-[30px] items-center"
+        className="w-[100vw] flex flex-col gap-[30px] items-center max-sm:w-[430px]"
         style={{ paddingTop: "40px" }}
       >
-        <div className="flex justify-between w-[1277px] h-[36px]">
+        <div className="flex justify-between w-[1277px] h-[36px] max-sm:w-[400px]">
           <p className="text-[24px] text-black 0">Upcoming</p>
         </div>
         <div className="flex flex-col gap-[30px] max-sm:w-[430px] max-sm:flex max-sm:flex-col max-sm:items-center">
           <div className=" w-[1277px] gap-[30px]  grid grid-cols-5 max-sm:grid max-sm:grid-cols-2">
-            {
+            {upcomingMoviesData &&
               upcomingMoviesData.slice(0, 10).map((movie, index) => {
                 return (
                   <MovieCard
@@ -70,7 +70,6 @@ export default function UpComing() {
                   />
                 );
               })}
-            
           </div>
         </div>
       </div>
@@ -90,7 +89,7 @@ export default function UpComing() {
             </button>
             <div className="w-[172px] h-[40px] flex flex-row gap-[3px]">
               <button>{page - 1}</button>
-                  <button
+              <button
                 className="border-1 w-10 rounded-sm text-black"
                 style={{
                   borderColor: isBackClick ? "black" : "none",
@@ -101,7 +100,7 @@ export default function UpComing() {
               </button>
               <button>{page + 1}</button>
               <button>...</button>
-                  <button>{totalPage}</button>
+              <button>{totalPage}</button>
             </div>
             <button
               className="w-[88px] h-[40px] flex justify-center items-center text-black rounded-md cursor-pointer"

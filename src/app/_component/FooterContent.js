@@ -1,7 +1,7 @@
 export const FooterContent = (props) => {
   const { src, text, text1 } = props;
   return (
-    <div className="w-[100vw] flex justify-center">
+    <div className="w-[100vw] flex justify-center max-sm:w-[430px]">
       <div
         className="w-[1440px] h-[280px] bg-[#4338CA] flex justify-center items-center max-sm:w-[430px] max-sm:h-[246px] max-sm:bg-[#4338CA]"
         style={{ paddingTop: "40px" }}

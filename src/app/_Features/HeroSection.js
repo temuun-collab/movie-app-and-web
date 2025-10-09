@@ -12,15 +12,16 @@ const options = {
   },
 };
 export const HeroSection = (props) => {
-  const [slide, setSlide] = useState(1);
+  const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState();
   const nextActiveButton = () => {
-    setSlide(slide + 1);
+    setPage(page + 1);
   };
   const backActiveButton = () => {
-    if (slide === 1) {
+    if (page === 1) {
       return;
     } else {
-      setSlide(slide - 1);
+      setPage(page - 1);
     }
   };
   const [heroSectionData, setHeroSectionData] = useState([]);
@@ -30,6 +31,8 @@ export const HeroSection = (props) => {
     const data = await fetch(apiLink, options);
     const jsonData = await data.json();
     setHeroSectionData(jsonData.results);
+    setTotalPage(jsonData.total_pages);
+
     setLoading(false);
   };
 
@@ -51,7 +54,7 @@ export const HeroSection = (props) => {
           className="w-[4320px] flex gap-5 relative translate-x-[0px] max-sm:w-[1125px]
 "
         >
-          {slide === 1 &&
+          {page === 1 &&
             heroSectionData.slice(0, 1).map((movie, index) => {
               return (
                 <HeroSlide
@@ -69,10 +72,29 @@ export const HeroSection = (props) => {
                   }
                   rate={movie.vote_average}
                   movieId={movie.id}
+                  beforeButton={
+                    <button
+                      className="w-[40px] h-[40px] hover:scale-[0.9] cursor-pointer bg-[#F4F4F5] rounded-full flex justify-center items-center "
+                      onClick={backActiveButton}
+                    >
+                      <img src="./backVector.png" className="w-[4px] h-[8px]" />
+                    </button>
+                  }
+                  buttonDot1={
+                    <button
+                      className="border-1 w-10 rounded-sm text-black"
+                      style={{
+                        borderColor: isBackClick ? "black" : "none",
+                        borderColor: isNextClick ? "black" : "none",
+                      }}
+                    >
+                      {page}
+                    </button>
+                  }
                 />
               );
             })}
-          {slide === 2 &&
+          {page === 2 &&
             heroSectionData.slice(1, 2).map((movie, index) => {
               return (
                 <HeroSlide
@@ -101,7 +123,7 @@ export const HeroSection = (props) => {
                 />
               );
             })}
-          {slide === 3 &&
+          {page === 3 &&
             heroSectionData.slice(2, 3).map((movie, index) => {
               return (
                 <HeroSlide
