@@ -15,6 +15,8 @@ const options = {
 export default function UpComing() {
   const [upcomingMoviesData, setUpcomingMoviesData] = useState([]);
   const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState();
+  const [totalResult, setTotalResult] = useState();
   const [isNextClick, setIsNextClick] = useState(false);
   const [isBackClick, setIsBackClick] = useState(false);
   const apiLink = `https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=${page}`;
@@ -37,6 +39,8 @@ export default function UpComing() {
     const data = await fetch(apiLink, options);
     const jsonData = await data.json();
     setUpcomingMoviesData(jsonData.results);
+    setTotalPage(jsonData.total_pages);
+    setTotalResult(jsonData.total_result);
   };
 
   useEffect(() => {
@@ -54,7 +58,7 @@ export default function UpComing() {
         </div>
         <div className="flex flex-col gap-[30px] max-sm:w-[430px] max-sm:flex max-sm:flex-col max-sm:items-center">
           <div className=" w-[1277px] gap-[30px]  grid grid-cols-5 max-sm:grid max-sm:grid-cols-2">
-            {page === 1 &&
+            {
               upcomingMoviesData.slice(0, 10).map((movie, index) => {
                 return (
                   <MovieCard
@@ -66,18 +70,7 @@ export default function UpComing() {
                   />
                 );
               })}
-            {page === 2 &&
-              upcomingMoviesData.slice(10, 20).map((movie, index) => {
-                return (
-                  <MovieCard
-                    key={index}
-                    title={movie.title}
-                    imgSrc={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                    rating={movie.vote_average}
-                    movieId={movie.id}
-                  />
-                );
-              })}
+            
           </div>
         </div>
       </div>
@@ -96,24 +89,19 @@ export default function UpComing() {
               Previous
             </button>
             <div className="w-[172px] h-[40px] flex flex-row gap-[3px]">
-              <button
-                className="w-[40px] h-[40px] flex justify-center items-center text-black text-[14px] rounded-md "
-                style={{ border: isBackClick ? "1px solid black" : "none" }}
+              <button>{page - 1}</button>
+                  <button
+                className="border-1 w-10 rounded-sm text-black"
+                style={{
+                  borderColor: isBackClick ? "black" : "none",
+                  borderColor: isNextClick ? "black" : "none",
+                }}
               >
-                1
+                {page}
               </button>
-              <button
-                className="w-[40px] h-[40px] flex justify-center items-center text-black text-[14px] rounded-md  "
-                style={{ border: isNextClick ? "1px solid black" : "none" }}
-              >
-                2
-              </button>
-              <button className="w-[40px] h-[40px] flex justify-center items-center text-black text-[14px] rounded-md  ">
-                ...
-              </button>
-              <button className="w-[40px] h-[40px] flex justify-center items-center text-black text-[14px] rounded-md  ">
-                5
-              </button>
+              <button>{page + 1}</button>
+              <button>...</button>
+                  <button>{totalPage}</button>
             </div>
             <button
               className="w-[88px] h-[40px] flex justify-center items-center text-black rounded-md cursor-pointer"

@@ -20,6 +20,8 @@ export default function Page() {
   const [page, setPage] = useState(1);
   const [isNextClick, setIsNextClick] = useState(false);
   const [isBackClick, setIsBackClick] = useState(false);
+  const [totalPage, setTotalPage] = useState();
+  const [totalResult, setTotalResult] = useState();
   const param = useParams();
   const { searchValue } = param;
   const apiLinkSearchMovieMore = `https://api.themoviedb.org/3/search/movie?query=${searchValue}&language=en-US&page=${page}`;
@@ -28,9 +30,10 @@ export default function Page() {
     const data = await fetch(apiLinkSearchMovieMore, options);
     const jsonData = await data.json();
     setSearchList(jsonData.results);
+    setTotalPage(jsonData.total_pages);
+    setTotalResult(jsonData.total_results);
   };
-  console.log("search", searchList);
-
+  
   const getDataGenres = async () => {
     const data = await fetch(apiLink, options);
     const jsonData = await data.json();
@@ -68,11 +71,11 @@ export default function Page() {
         <div className="flex flex-col">
           {searchList && (
             <div className="flex flex-col w-[806px]  max-sm:w-[400px] text-black text-[20px] font-bold">
-              results for "{searchValue}"
+              {totalResult}results for "{searchValue}"
             </div>
           )}
           <div className="gap-5 grid grid-cols-4 w-[910px] max-sm:w-[350px] max-sm:grid max-sm:grid-cols-2">
-            {page === 1 &&
+            {
               searchList.slice(0, 8).map((movie, index) => {
                 return (
                   <MovieCard
@@ -85,19 +88,7 @@ export default function Page() {
                   />
                 );
               })}
-            {page === 2 &&
-              searchList.slice(8, 16).map((movie, index) => {
-                return (
-                  <MovieCard
-                    key={index}
-                    title={movie.title}
-                    imgSrc={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                    rating={movie.vote_average}
-                    movieId={movie.id}
-                    className={"w-[165px] h-[331px]"}
-                  />
-                );
-              })}
+            
           </div>
           <div className="mt-5 mb-5 ">
             <div className="w-[806px] h-[40px] flex justify-end">
@@ -114,24 +105,22 @@ export default function Page() {
                   Previous
                 </button>
                 <div className="w-[172px] h-[40px] flex flex-row gap-[3px]">
-                  <button
-                    className="w-[40px] h-[40px] flex justify-center items-center text-black text-[14px] rounded-md  "
-                    style={{ border: isBackClick ? "1px solid black" : "none" }}
-                  >
-                    1
+                  <button>
+                   {page-1}
                   </button>
                   <button
-                    className="w-[40px] h-[40px] flex justify-center items-center text-black text-[14px] rounded-md  "
-                    style={{ border: isNextClick ? "1px solid black" : "none" }}
-                  >
-                    2
-                  </button>
-                  <button className="w-[40px] h-[40px] flex justify-center items-center text-black text-[14px] rounded-md  ">
-                    ...
-                  </button>
-                  <button className="w-[40px] h-[40px] flex justify-center items-center text-black text-[14px] rounded-md  ">
-                    5
-                  </button>
+                className="border-1 w-10 rounded-sm text-black"
+                style={{
+                  borderColor: isBackClick ? "black" : "none",
+                  borderColor: isNextClick ? "black" : "none",
+                }}
+              >
+                {page}
+              </button>
+                  <button>{page + 1}</button>
+              <button>...</button>
+                  <button>{totalPage}</button>
+                  
                 </div>
                 <button
                   className="w-[88px] h-[40px] flex justify-center items-center rounded-md"
