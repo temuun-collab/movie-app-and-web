@@ -64,10 +64,10 @@ export default function MovieGenre(props) {
   return (
     <div className="bg-white w-[100vw] flex flex-col gap-5 items-center">
       <Header />
-      <div className="flex justify-between w-[1280px] h-[36px] max-sm:w-[400px]">
+      <div className="flex justify-between w-[1280px] h-[36px] max-sm:w-[430px]">
         <p className="text-[24px] text-black 0">Search Filter</p>
       </div>
-      <div className="w-[1280px] flex flex-row">
+      <div className="w-[1280px] flex flex-row max-sm:w-[430px] max-sm:flex max-sm:flex-col">
         <div className="w-[387px] h-[352px] mr-3">
           <div className="flex flex-col">
             <div className="w-[213px] h-[60px]">
@@ -85,8 +85,8 @@ export default function MovieGenre(props) {
             })}
           </div>
         </div>
-        <div className="border-l-2 border-gray-100 h-250 w-3"></div>
-        <div className="flex flex-col">
+        <div className="border-l-2 border-gray-100 h-250 w-3 max-sm:hidden"></div>
+        <div className="flex flex-col max-sm:w-[430px] max-sm:flex max-sm:flex-col max-sm:items-center">
           {genres && (
             <div className="flex flex-col w-[806px]  max-sm:w-[400px] text-black text-[20px] font-bold">
               {totalResult} titles in "{genreName[0]?.name}"
@@ -107,7 +107,7 @@ export default function MovieGenre(props) {
             })}
           </div>
           <div className="mt-5 mb-5 ">
-            <div className="w-[806px] h-[40px] flex justify-end">
+            <div className="w-[806px] h-[40px] flex justify-end max-sm:w-[430px] max-sm:flex max-sm:justify-end">
               <div className="w-[382px] h-[40px] flex flex-row gap-[3px]">
                 <button
                   className="w-[114px] h-[40px] flex justify-center items-center text-[#09090B] rounded-md  cursor-pointer"

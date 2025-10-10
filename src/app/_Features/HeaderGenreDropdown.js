@@ -90,7 +90,7 @@ export const HeaderGenreDropdown = (props) => {
       )}
       {searchValue.length > 0 && (
         // <div className=" max-sm:w-[430px] max-sm:h-100vh max-sm:flex max-sm:mt-5">
-          <div className="w-[557px] flex-col flex m-8  absolute bg-white z-10 mt-10  border-gray-100 rounded-md overflow-y-scroll max-h-[600px] max-sm:w-[335px] max-sm:h-[729px] max-sm:mr-15">
+        <div className="w-[557px] flex-col flex m-8  absolute bg-white z-10 mt-10  border-gray-100 rounded-md overflow-y-scroll max-h-[600px] max-sm:w-[335px] max-sm:h-[729px] max-sm:mr-15">
           {searchList.map((movie, index) => {
             if (loading) {
               return (
@@ -137,7 +137,7 @@ export const HeaderGenreDropdown = (props) => {
                           </div>
                         </div>
                       </div>
-                      <div className="flex justify-between">
+                      <div className="flex justify-between max-sm:w-[212px]">
                         <p className="text-[14px] text-black">
                           {movie.release_date}
                         </p>
@@ -170,7 +170,6 @@ export const HeaderGenreDropdown = (props) => {
           )}
         </div>
         // </div>
-        
       )}
       <div
         className="w-[379px] h-[36px] flex gap-[10px] rounded-md border-1 border-gray-200  items-center  max-sm:w-[260px] max-sm:h-[35px] max-sm:flex max-sm:justify-between"
@@ -181,15 +180,13 @@ export const HeaderGenreDropdown = (props) => {
           className="w-[11px] h-[11px] max-sm:w-[12px] max-sm:h-[12px] max-sm:flex max-sm:justipy-center"
           // onClick={handleClickButton}
         />
-        
-          <input
+
+        <input
           className="w-[350px] h-[36px] g-[10px] text-black max-sm:w-[260px] max-sm:h-[35px]"
           placeholder="Search.."
           onChange={handleInputValue}
           value={searchValue}
         />
-        
-        
       </div>
     </div>
   );

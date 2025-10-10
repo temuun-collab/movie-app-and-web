@@ -34,9 +34,9 @@ export const FooterContent = (props) => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col gap-[12px]">
+            <div className="flex flex-col gap-[8px]">
               <p className="text-[14px]">Follow Us</p>
-              <div className="flex gap-[10px] max-sm:flex max-sm:flex-col">
+              <div className="flex gap-[5px] max-sm:flex max-sm:flex-col ">
                 {/* <a href="Facebook"></a>
               <a href="Instagram"></a>
               <a href="Twitter"></a>

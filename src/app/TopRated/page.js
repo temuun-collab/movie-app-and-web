@@ -53,7 +53,7 @@ export default function TopRated() {
         className="w-[100vw] flex flex-col gap-[30px] items-center"
         style={{ paddingTop: "40px" }}
       >
-        <div className="flex justify-between w-[1277px] h-[36px]">
+        <div className="flex justify-between w-[1277px] h-[36px] max-sm:w-[430px]">
           <p className="text-[24px] text-black 0">Top Rated</p>
         </div>
         <div className="flex flex-col gap-[30px] max-sm:w-[430px] max-sm:flex max-sm:flex-col max-sm:items-center">

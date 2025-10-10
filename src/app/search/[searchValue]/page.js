@@ -62,13 +62,13 @@ export default function Page() {
     getDataGenres();
   }, []);
   return (
-    <div className="bg-white w-[100vw] flex flex-col gap-5 items-center">
+    <div className="bg-white w-[100vw] flex flex-col gap-5 items-center max-sm:w-[100vw] max-sm:flex">
       <Header />
-      <div className="flex justify-between w-[1280px] h-[36px] max-sm:w-[400px]">
+      <div className="flex justify-between w-[1280px] h-[36px] max-sm:w-[430px]">
         <p className="text-[24px] text-black 0">Search results</p>
       </div>
-      <div className="w-[1280px] flex flex-row gap-10">
-        <div className="flex flex-col">
+      <div className="w-[1280px] flex flex-row gap-10 max-sm:w-[430px] max-sm:flex max-sm:flex-col max-sm:items-center">
+        <div className="flex flex-col max-sm:w-[430px] max-sm:flex max-sm:flex-col max-sm:items-center">
           {searchList && (
             <div className="flex flex-col w-[806px]  max-sm:w-[400px] text-black text-[20px] font-bold">
               {totalResult}results for "{searchValue}"
@@ -89,7 +89,7 @@ export default function Page() {
             })}
           </div>
           <div className="mt-5 mb-5 ">
-            <div className="w-[806px] h-[40px] flex justify-end">
+            <div className="w-[806px] h-[40px] flex justify-end max-sm:w-[430px] max-sm:h-[20px] max-sm:flex max-sm:justify-end">
               <div className="w-[382px] h-[40px] flex flex-row gap-[3px]">
                 <button
                   className="w-[114px] h-[40px] flex justify-center items-center text-[#09090B] rounded-md"
@@ -135,8 +135,8 @@ export default function Page() {
             </div>
           </div>
         </div>
-        <div className="border-l-2 border-gray-100 h-250"></div>
-        <div className="w-[329px] h-[352px] mr-3">
+        <div className="border-l-2 border-gray-100 h-250 max-sm:hidden"></div>
+        <div className="w-[329px] h-[352px] mr-3 max-sm:w-[430px] max-sm:h-[270px] max-sm:flex max-sm:flex-col  max-sm:justify-center">
           <div className="flex flex-col">
             <div className="w-[213px] h-[60px]">
               <h3 className="text-[24px] text-black">Genres</h3>

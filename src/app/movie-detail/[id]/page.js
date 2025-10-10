@@ -91,13 +91,13 @@ export default function MovieDetail() {
   }
 
   return (
-    <div className="bg-white w-[100vw] h-[100vw]">
-      <div className="w-[100vw]">
+    <div className="bg-white max-sm:bg-white">
+      <div className="w-[100vw] max-sm:w-[430px] max-sm:flex  max-sm:flex-col">
         <Header />
-        <div className="w-[1080px] flex flex-col ">
-          <div className="w-[100vw] flex justify-center">
-            <div className="w-[1080px] h-[72px] flex justify-between">
-              <div className="flex flex-col ">
+        <div className="w-[1080px] flex flex-col max-sm:w-[430px] max-sm:flex max-sm:justify-center ">
+          <div className="w-[100vw] flex justify-center max-sm:w-[430px]">
+            <div className="w-[1080px] h-[72px] flex justify-between max-sm:w-[375px] max-sm:flex sm:gap-10 max-sm:overflow-y-scroll">
+              <div className="flex flex-col  max-sm:w-[211px]">
                 <p className="text-[36px] text-black text-700">
                   {movieDetail.title}
                 </p>
@@ -110,7 +110,7 @@ export default function MovieDetail() {
                   </p>
                 </div>
               </div>
-              <div className="flex flex-col justify-center items-center mt-5 ">
+              <div className="flex flex-col justify-center items-center mt-5 max-sm:w-[71px]">
                 <p className="w-[250px] h-[16px] text-[12px] text-black">
                   {movieDetail.tagline}
                 </p>
@@ -148,18 +148,18 @@ export default function MovieDetail() {
           )}
 
           <div className="w-[100vw] flex justify-center">
-            <div className="w-[1080px] h-[428px] flex gap-10 mt-10 ">
+            <div className="w-[1080px] h-[428px] flex gap-10 mt-10 max-sm:flex max-sm:flex-col max-sm:w-[430px] max-sm:h-[211px]">
               <img
                 src={`https://image.tmdb.org/t/p/original/${movieDetail.poster_path}`}
-                className="w-[290px] h-[428px] rounded-3"
+                className="w-[290px] h-[428px] rounded-3 max-sm:w-[100px] max-sm:h-[148px] max-sm:hidden"
               />
-              <div className="w-[760px] h-[428px] relative ">
+              <div className="w-[760px] h-[428px] relative max-sm:w-[430px] max-sm:h-[211px]">
                 <img
                   src={`https://image.tmdb.org/t/p/original/${movieDetail.backdrop_path}`}
-                  className="w-[760px] h-[428px] rounded-3 absolute  "
+                  className="w-[760px] h-[428px] rounded-3 absolute  max-sm:w-[430px] max-sm:h-[211px]"
                 />
                 <div
-                  className=" absolute z-10 flex gap-5 mt-90 ml-10"
+                  className=" absolute z-10 flex gap-5 mt-90 ml-10 max-sm:absolute max-sm:z-10 "
                   style={{ zIndex: playTrailer === "" ? "-1" : "0" }}
                 >
                   <button
@@ -174,25 +174,36 @@ export default function MovieDetail() {
               </div>
             </div>
           </div>
-          <div className="w-[100vw] flex justify-center mt-10">
+          <div className="w-[100vw] flex justify-center mt-10 max-sm:w-[430px] max-sm:flex max-sm:justify-center">
             <div className="flex w-[1080px] gap-2 flex-col">
-              <div className="flex gap-3">
-                {movieDetail?.genres?.map((genre, index) => {
-                  return (
-                    <button
-                      key={index}
-                      className="w-auto  text-black border-1 rounded-md border-gray-100 text-[12px]"
-                    >
-                      {genre.name}
-                    </button>
-                  );
-                })}
+              <div className="max-sm:flex max-sm:flex-row max-sm:gap-10">
+                <img
+                  src={`https://image.tmdb.org/t/p/original/${movieDetail.poster_path}`}
+                  className=" rounded-3 max-sm:w-[100px] max-sm:h-[148px] lg:hidden"
+                />
+                <div className="max-sm:flex max-sm:flex-col max-sm:w-[201px] max-sm:h-[344px]">
+                  <div className="flex gap-3 max-sm:w-[201px] max-sm:h-[84px]">
+                    {movieDetail?.genres?.map((genre, index) => {
+                      return (
+                        <button
+                          key={index}
+                          className="w-auto  text-black border-1 rounded-md border-gray-100 text-[12px]"
+                        >
+                          {genre.name}
+                        </button>
+                      );
+                    })}
+                  </div>
+                  <div className="w-[1080px] max-sm:w-[201px] max-sm:h-[240px]">
+                    <p className="text-[16px] text-black">
+                      {movieDetail.overview}
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="w-[1080px]">
-                <p className="text-[16px] text-black">{movieDetail.overview}</p>
-              </div>
-              <div className="w-[1080px] flex flex-col gap-3">
-                <div className="flex gap-5">
+
+              <div className="w-[1080px] flex flex-col gap-3 max-sm:w-[430px] max-sm:h-[203px] max-sm:flex max-sm:flex-col max-sm:items-center">
+                <div className="flex gap-5 max-sm:w-[335px] max-sm:h-[41px]">
                   <p className="font-bold text-bold text-[16px] text-black text-700">
                     Director
                   </p>
@@ -207,8 +218,8 @@ export default function MovieDetail() {
                     );
                   })}
                 </div>
-                <hr className="w-[1080px] h-0.5 bg-gray-100 border-0 " />
-                <div className="flex gap-5">
+                <hr className="w-[1080px] h-0.5 bg-gray-100 border-0 max-sm:w-[335px] " />
+                <div className="flex gap-5 max-sm:w-[335px] max-sm:h-[41px]">
                   <p className="font-bold text-bold text-[16px] text-black text-700">
                     Writers
                   </p>
@@ -223,26 +234,28 @@ export default function MovieDetail() {
                     );
                   })}
                 </div>
-                <hr className="w-[1080px] h-0.5 bg-gray-100 border-0 " />
-                <div className="flex gap-5">
-                  <p className="font-bold text-bold text-[16px] text-black text-700">
-                    Stars
-                  </p>
-                  {movieDirector?.crew?.slice(6, 9).map((item, index) => {
-                    return (
-                      <p
-                        key={index}
-                        className="text-[16px] text-black text-400"
-                      >
-                        {item.name}
-                      </p>
-                    );
-                  })}
+                <hr className="w-[1080px] h-0.5 bg-gray-100 border-0 max-sm:w-[335px] " />
+                <div className="max-sm:gap-7 max-sm:grid">
+                  <div className="flex gap-5 max-sm:w-[335px] max-sm:h-[41px]">
+                    <p className="font-bold text-bold text-[16px] text-black text-700">
+                      Stars
+                    </p>
+                    {movieDirector?.crew?.slice(6, 9).map((item, index) => {
+                      return (
+                        <p
+                          key={index}
+                          className="text-[16px] text-black text-400"
+                        >
+                          {item.name}
+                        </p>
+                      );
+                    })}
+                  </div>
+                  <hr className="w-[1080px] h-0.5 bg-gray-100 border-0 max-sm:w-[335px]" />
                 </div>
-                <hr className="w-[1080px] h-0.5 bg-gray-100 border-0 " />
               </div>
-              <div className="w-[1080px]  flex flex-col gap-[30px] mt-5">
-                <div className="flex justify-between w-[1080px] max-sm:w-[400px]">
+              <div className="w-[1080px]  flex flex-col gap-[30px] mt-5 max-sm:w-[430px] max-sm:flex max-sm:flex-col max-sm:items-center">
+                <div className="flex justify-between w-[1080px] max-sm:w-[335px]">
                   <p className="text-[24px] text-black 0">More Like This</p>
                   <Link href={`/moreLikeMovie/${id}`}>
                     <button className="w-[120px] h-[36px] text-black flex justify-center items-center cursor-pointer">
@@ -252,7 +265,7 @@ export default function MovieDetail() {
                   </Link>
                 </div>
 
-                <div className=" w-[1150px] gap-[30px] grid grid-cols-5 max-sm:w-[350px] max-sm:grid max-sm:grid-cols-2">
+                <div className=" w-[1150px] gap-[30px] grid grid-cols-5 max-sm:w-[430px] max-sm:grid max-sm:grid-cols-2 ">
                   {sameMovieMore?.slice(0, 5).map((movie, index) => {
                     return (
                       <MovieCard
