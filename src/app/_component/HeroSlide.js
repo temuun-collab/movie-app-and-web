@@ -100,17 +100,17 @@ export const HeroSlide = (props) => {
                     setShowTrailer(false);
                   }}
                 >
-                  <div className="w-[100vh] h-[100vh] mb-80 ml-50">
+                  <div className="w-[100vh] h-[100vh] mb-80 ml-50 " >
                     <iframe
                       src={
                         playTrailer?.results?.length > 0
                           ? `https://www.youtube.com/embed/${playTrailer.results[0]?.key}`
                           : ""
                       }
-                      width="697px"
-                      height="401px"
+                      // width=""
+                      // height=""
                       allowFullScreen
-                      className="absolute z-10"
+                      className="absolute z-10 w-[697px] h-[401px] max-sm:[300px] max-sm:h-[250px]"
                     ></iframe>
                   </div>
                 </div>

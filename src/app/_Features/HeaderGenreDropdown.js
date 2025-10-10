@@ -18,6 +18,7 @@ export const HeaderGenreDropdown = (props) => {
   const [searchValue, setSearchValue] = useState("");
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
+  // const [search , setSearch] = useState(false)
   const apiLinkSearchMovieMore = `https://api.themoviedb.org/3/search/movie?query=${searchValue}&language=en-US&page=1`;
   const activeButtonGenre = () => {
     setGenre(!genre);
@@ -30,7 +31,9 @@ export const HeaderGenreDropdown = (props) => {
   const handleInputValue = (e) => {
     setSearchValue(e.target.value);
   };
-
+  // const handleClickButton = () => {
+  //   setSearch(!search);
+  // };
   const getData = async () => {
     const data = await fetch(apiLink, options);
     const jsonData = await data.json();
@@ -62,7 +65,7 @@ export const HeaderGenreDropdown = (props) => {
       </button>
       {genre && (
         <div
-          className="absolute mt-10 w-[577px] h-[333px] bg-white border border-gray-100 rounded-md shadow-lg z-50"
+          className="absolute mt-10 w-[577px] h-[333px] bg-white border border-gray-100 rounded-md shadow-lg z-50 max-sm:w-[335px] max-sm:h-[513px] "
           onClick={() => {
             setGenre(false);
           }}
@@ -74,9 +77,9 @@ export const HeaderGenreDropdown = (props) => {
                 See lists of movies by genre
               </p>
             </div>
-            <hr className="w-[537px] mt-3" />
+            <hr className="w-[537px] mt-3 max-sm:w-[311px]" />
           </div>
-          <div className="grid grid-cols-5 gap-[10px] m-5">
+          <div className="grid grid-cols-5 gap-[10px] m-5 max-sm:grid max-sm:grid-cols-2">
             {allGenre?.map((genre, index) => {
               return (
                 <Genre key={index} title={genre.name} movieId={genre.id} />
@@ -86,13 +89,14 @@ export const HeaderGenreDropdown = (props) => {
         </div>
       )}
       {searchValue.length > 0 && (
-        <div className="w-[557px] flex-col flex m-8  absolute bg-white z-10 mt-10  border-gray-100 rounded-md overflow-y-scroll max-h-[600px]">
+        // <div className=" max-sm:w-[430px] max-sm:h-100vh max-sm:flex max-sm:mt-5">
+          <div className="w-[557px] flex-col flex m-8  absolute bg-white z-10 mt-10  border-gray-100 rounded-md overflow-y-scroll max-h-[600px] max-sm:w-[335px] max-sm:h-[729px] max-sm:mr-15">
           {searchList.map((movie, index) => {
             if (loading) {
               return (
                 <div
                   key={index}
-                  className=" text-black w-[553px] m-[8px] bg-white h-[128px] flex justify-center items-center gap-10"
+                  className=" text-black w-[553px] m-[8px] bg-white h-[128px] flex justify-center items-center gap- max-sm:w-[311px] max-sm:h-[116px]"
                 >
                   loading..
                 </div>
@@ -110,14 +114,14 @@ export const HeaderGenreDropdown = (props) => {
             }
             return (
               <div key={movie.id}>
-                <div className="w-[553px] m-[8px]">
+                <div className="w-[553px] m-[8px] max-sm:w-[311px] max-sm:h-[116px]">
                   <div className="flex flex-row gap-5">
                     <img
                       src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                       className="w-[67px] h-[100px] rounded-md"
                     />
-                    <div className="flex flex-col w-[454px] h-[99px] gap-5">
-                      <div className="flex justify-start w-[454px] h-[51px]">
+                    <div className="flex flex-col w-[454px] h-[99px] gap-5 max-sm:w-[311px]">
+                      <div className="flex justify-start w-[454px] h-[51px] max-sm:w-[311px]">
                         <div className="flex flex-col">
                           <p className="text-[20px] text-black text-600 font-bold">
                             {movie.title}
@@ -150,7 +154,7 @@ export const HeaderGenreDropdown = (props) => {
                     </div>
                   </div>
                 </div>
-                <hr className="w-[549px] h-0.5 bg-gray-100 border-0 mb-3" />
+                <hr className="w-[549px] h-0.5 bg-gray-100 border-0 mb-3 max-sm:w-[340px]" />
               </div>
             );
           })}
@@ -165,21 +169,27 @@ export const HeaderGenreDropdown = (props) => {
             </div>
           )}
         </div>
+        // </div>
+        
       )}
       <div
-        className="w-[379px] h-[36px] flex gap-[10px] rounded-md border-1 border-gray-200  items-center  max-sm:w-[36px] max-sm:h-[36px] max-sm:flex max-sm:justify-between"
+        className="w-[379px] h-[36px] flex gap-[10px] rounded-md border-1 border-gray-200  items-center  max-sm:w-[260px] max-sm:h-[35px] max-sm:flex max-sm:justify-between"
         style={{ paddingLeft: "5px" }}
       >
         <img
           src="/logo2.png"
-          className="w-[11px] h-[11px] max-sm:w-[12px] max-sm:h-[12px]"
+          className="w-[11px] h-[11px] max-sm:w-[12px] max-sm:h-[12px] max-sm:flex max-sm:justipy-center"
+          // onClick={handleClickButton}
         />
-        <input
-          className="w-[350px] h-[36px] g-[10px] text-black max-sm:hidden"
+        
+          <input
+          className="w-[350px] h-[36px] g-[10px] text-black max-sm:w-[260px] max-sm:h-[35px]"
           placeholder="Search.."
           onChange={handleInputValue}
           value={searchValue}
         />
+        
+        
       </div>
     </div>
   );

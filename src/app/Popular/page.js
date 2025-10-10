@@ -57,8 +57,8 @@ export default function Popular() {
         <div className="flex justify-between w-[1277px] h-[36px]">
           <p className="text-[24px] text-black 0">Popular</p>
         </div>
-        <div className="flex flex-col gap-[30px]">
-          <div className=" w-[1277px] gap-[30px] grid grid-cols-5">
+        <div className="flex flex-col gap-[30px] max-sm:w-[430px] max-sm:flex max-sm:flex-col max-sm:items-center">
+          <div className=" w-[1277px] gap-[30px] grid grid-cols-5 max-sm:w-[335px] max-sm:grid max-sm:grid-cols-2">
             {popularMoviesData &&
               popularMoviesData.slice(0, 10).map((movie, index) => {
                 return (
@@ -75,7 +75,7 @@ export default function Popular() {
         </div>
       </div>
       <div className="mt-5 mb-5">
-        <div className="w-[1280px] h-[40px] flex justify-end">
+        <div className="w-[1280px] h-[40px] flex justify-end max-sm:w-[430px] max-sm:flex max-sm:justify-end">
           <div className="w-[382px] h-[40px] flex flex-row gap-[3px]">
             <button
               className="w-[114px] h-[40px] flex justify-center items-center text-[#09090B] rounded-md cursor-pointer"
