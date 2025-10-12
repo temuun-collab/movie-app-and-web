@@ -43,7 +43,6 @@ export default function MovieDetail() {
     setLoading(true);
     const data = await fetch(apiLinkTeamInf, options);
     const jsonData = await data.json();
-
     setMovieDirector(jsonData);
     setLoading(false);
   };
@@ -51,25 +50,23 @@ export default function MovieDetail() {
     setLoading(true);
     const data = await fetch(apiLinkSimilarMovie, options);
     const jsonData = await data.json();
-
     setSameMovieMore(jsonData.results);
     setLoading(false);
   };
+  console.log("kkk", sameMovieMore);
+  
   const getDataTrailerVideo = async () => {
     const data = await fetch(apiLinkTrailerVideo, options);
     const jsonData = await data.json();
 
     setPlayTrailer(jsonData);
   };
-
   useEffect(() => {
     getDataMovieMore();
   }, [id]);
-
   useEffect(() => {
     getDataTeamInf();
   }, [id]);
-
   useEffect(() => {
     getDataSimilarMovie();
   }, [id]);

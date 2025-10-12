@@ -26,6 +26,7 @@ export const HeroSection = (props) => {
       setPage(page - 1);
     }
   };
+  
   const [heroSectionData, setHeroSectionData] = useState([]);
   const [loading, setLoading] = useState(false);
   const getData = async () => {
@@ -66,7 +67,7 @@ export const HeroSection = (props) => {
                   description={movie.overview}
                   button={
                     <button
-                      className="w-[40px] h-[40px] hover:scale-[0.9] cursor-pointer bg-[#F4F4F5] rounded-full flex justify-center items-center max-sm:hidden"
+                      className="w-[40px] h-[40px] hover:scale-[0.9] cursor-pointer bg-[#F4F4F5] rounded-full flex justify-center items-center  max-sm:w-[20px] max-sm:h-[20px] max-sm:bg-[#F4F4F5] max-sm:rounded-full "
                       onClick={nextActiveButton}
                     >
                       <img src="./HeroVector.png" className="w-[4px] h-[8px]" />
@@ -75,17 +76,7 @@ export const HeroSection = (props) => {
                   rate={movie.vote_average}
                   movieId={movie.id}
                  
-                  // buttonDot1={
-                  //   <button
-                  //     className="border-1 w-10 rounded-sm text-black"
-                  //     style={{
-                  //       borderColor: isBackClick ? "black" : "none",
-                  //       borderColor: isNextClick ? "black" : "none",
-                  //     }}
-                  //   >
-                  //     {page}
-                  //   </button>
-                  // }
+                  
                 />
               );
             })}
@@ -99,7 +90,7 @@ export const HeroSection = (props) => {
                   description={movie.overview}
                   button={
                     <button
-                      className="w-[40px] h-[40px] hover:scale-[0.9] cursor-pointer bg-[#F4F4F5] rounded-full flex justify-center items-center  max-sm:hidden"
+                      className="w-[40px] h-[40px] hover:scale-[0.9] cursor-pointer bg-[#F4F4F5] rounded-full flex justify-center items-center  max-sm:w-[20px] max-sm:h-[20px] max-sm:bg-[#F4F4F5] max-sm:rounded-full max-sm:mb-30"
                       onClick={nextActiveButton}
                     >
                       <img src="./HeroVector.png" className="w-[4px] h-[8px]" />
@@ -108,7 +99,7 @@ export const HeroSection = (props) => {
                   rate={movie.vote_average}
                   beforeButton={
                     <button
-                      className="w-[40px] h-[40px] hover:scale-[0.9] cursor-pointer bg-[#F4F4F5] rounded-full flex justify-center items-center  max-sm:hidden"
+                      className="w-[40px] h-[40px] hover:scale-[0.9] cursor-pointer bg-[#F4F4F5] rounded-full flex justify-center items-center  max-sm:w-[20px] max-sm:h-[20px] max-sm:bg-[#F4F4F5] max-sm:rounded-full"
                       onClick={backActiveButton}
                     >
                       <img src="./backVector.png" className="w-[4px] h-[8px]" />
@@ -128,7 +119,7 @@ export const HeroSection = (props) => {
                   description={movie.overview}
                   beforeButton={
                     <button
-                      className="w-[40px] h-[40px] bg-[#F4F4F5] rounded-full flex justify-center items-center hover:scale-[0.9] cursor-pointer  max-sm:hidden"
+                      className="w-[40px] h-[40px] bg-[#F4F4F5] rounded-full flex justify-center items-center hover:scale-[0.9] cursor-pointer max-sm:w-[20px] max-sm:h-[20px] max-sm:bg-[#F4F4F5] max-sm:rounded-full"
                       onClick={backActiveButton}
                     >
                       <img src="./backVector.png" className="w-[4px] h-[8px]" />

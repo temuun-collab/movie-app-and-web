@@ -19,9 +19,7 @@ export const HeroSlide = (props) => {
     button,
     beforeButton,
     movieId,
-    buttonDot1,
-    buttonDot2,
-    buttonDot3,
+    
   } = props;
   const [showTrailer, setShowTrailer] = useState(false);
   const [playTrailer, setPlayTrailer] = useState([]);
@@ -50,15 +48,16 @@ export const HeroSlide = (props) => {
             src={imgSrc}
             className="w-[1440px] h-[600px] absolute -z-1 max-sm:w-[430px] max-sm:h-[246px] max-sm:relative "
           />
-          <div className="max-sm:mt-0 max-sm:ml-0 mt-[290px] ml-[20px]">
+          <div className="max-sm:mt-[0] mt-[20px] ">
             {beforeButton}
           </div>
-          <div className="flex justify-between w-[1350px]  max-sm:w-[430px] max-sm:h-[246px] max-sm:my-0 max-sm:ml-0  max-sm:flex max-sm:justify-center my-[170px] ml-[139px]">
+          
+          <div className="flex justify-between w-[1350px]  max-sm:w-[430px] max-sm:h-[246px] max-sm:my-0 max-sm:ml-0  max-sm:flex max-sm:justify-center my-[170px] ml-[139px] absolute -z-1">
             <div
-              className="flex flex-col gap-[16px] "
+              className="flex flex-col gap-[16px] absolute z-10"
               // style={{ zIndex: playTrailer === "" ? "-1" : "0" }}
             >
-              <div className="flex flex-col max-sm:flex-row max-sm:pl-[10px]">
+              <div className="flex flex-col max-sm:flex-row max-sm:p-[10px] ">
                 <div className="max-sm:flex max-sm:flex-col">
                   <p className="text-[16px] text-white-600 max-sm:text-black max-sm:text-[14px]">
                     Now Playing:
@@ -88,11 +87,7 @@ export const HeroSlide = (props) => {
                   Watch trailer
                 </button>
               </div>
-              <div className="flex gap-2">
-                <button>{buttonDot1}</button>
-                <button>{buttonDot2}</button>
-                <button>{buttonDot3}</button>
-              </div>
+              
               {showTrailer && (
                 <div
                   className="flex w-[100vh] h-[100vh] justify-center absolute -z-1"
@@ -119,7 +114,8 @@ export const HeroSlide = (props) => {
                 </div>
               )}
             </div>
-            <div className="mt-[120px] mb-[30px] max-sm:mt-0 max-sm:mb-0 max-sm:mb-50px max-sm:mr-30px">
+            
+            <div className="mt-[120px] mb-[30px] max-sm:mt-[190px]">
               {button}
             </div>
           </div>
