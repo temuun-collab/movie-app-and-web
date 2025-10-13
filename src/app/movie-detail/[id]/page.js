@@ -54,7 +54,7 @@ export default function MovieDetail() {
     setLoading(false);
   };
   console.log("kkk", sameMovieMore);
-  
+
   const getDataTrailerVideo = async () => {
     const data = await fetch(apiLinkTrailerVideo, options);
     const jsonData = await data.json();
@@ -132,13 +132,11 @@ export default function MovieDetail() {
                 setShowTrailer(false);
               }}
             >
-              <div className="w-[997px] h-[651px] mb-80 ">
+              <div className="w-[997px] h-[651px] mb-80 max-sm:w-[375px] max-sm:h-[375px] max-sm:mb-[150px]">
                 <iframe
                   src={`https://www.youtube.com/embed/${playTrailer.results[0]?.key}`}
-                  width="997px"
-                  height="651px"
                   allowFullScreen
-                  className="absolute z-10 "
+                  className="absolute z-10  max-sm:w-[375px] max-sm:h-[375px] "
                 ></iframe>
               </div>
             </div>
@@ -178,8 +176,8 @@ export default function MovieDetail() {
                   src={`https://image.tmdb.org/t/p/original/${movieDetail.poster_path}`}
                   className=" rounded-3 max-sm:w-[100px] max-sm:h-[148px] lg:hidden"
                 />
-                <div className="max-sm:flex max-sm:flex-col max-sm:w-[201px] max-sm:h-[344px]">
-                  <div className="flex gap-3 max-sm:w-[201px] max-sm:h-[84px]">
+                <div className="max-sm:flex max-sm:flex-col max-sm:w-[201px] ">
+                  <div className="flex gap-3 max-sm:w-[201px] ">
                     {movieDetail?.genres?.map((genre, index) => {
                       return (
                         <button
@@ -191,7 +189,7 @@ export default function MovieDetail() {
                       );
                     })}
                   </div>
-                  <div className="w-[1080px] max-sm:w-[201px] max-sm:h-[240px]">
+                  <div className="w-[1080px] max-sm:w-[201px] max-sm:h-auto">
                     <p className="text-[16px] text-black">
                       {movieDetail.overview}
                     </p>
@@ -261,19 +259,20 @@ export default function MovieDetail() {
                     </button>
                   </Link>
                 </div>
-
-                <div className=" w-[1150px] gap-[30px] grid grid-cols-5 max-sm:w-[430px] max-sm:grid max-sm:grid-cols-2 ">
-                  {sameMovieMore?.slice(0, 5).map((movie, index) => {
-                    return (
-                      <MovieCard
-                        key={index}
-                        title={movie.title}
-                        imgSrc={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                        rating={movie.vote_average}
-                        movieId={movie.id}
-                      />
-                    );
-                  })}
+                <div className="max-sm:w-[430px] max-sm:flex max-sm:justify-center">
+                  <div className=" w-[1150px] gap-[30px] grid grid-cols-5 max-sm:w-[350px] max-sm:grid max-sm:grid-cols-2 ">
+                    {sameMovieMore?.slice(0, 5).map((movie, index) => {
+                      return (
+                        <MovieCard
+                          key={index}
+                          title={movie.title}
+                          imgSrc={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                          rating={movie.vote_average}
+                          movieId={movie.id}
+                        />
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
             </div>

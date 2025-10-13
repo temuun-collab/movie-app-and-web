@@ -14,7 +14,7 @@ const options = {
 };
 export default function UpComing() {
   const [upcomingMoviesData, setUpcomingMoviesData] = useState([]);
-  const [page, setPage] = useState([]);
+  const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState();
   const [totalResult, setTotalResult] = useState();
   const [isNextClick, setIsNextClick] = useState(false);
@@ -27,7 +27,7 @@ export default function UpComing() {
     setIsBackClick(false);
   };
   const handleBeforePage = () => {
-    if (page === 1) {
+    if (page === 0) {
       return;
     } else {
       setPage(page - 1);
@@ -42,8 +42,8 @@ export default function UpComing() {
     setTotalPage(jsonData.total_pages);
     setTotalResult(jsonData.total_result);
   };
- console.log("ttt", upcomingMoviesData);
- 
+  console.log("ttt", upcomingMoviesData);
+
   useEffect(() => {
     getData();
   }, [page]);

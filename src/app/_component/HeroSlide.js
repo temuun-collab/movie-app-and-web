@@ -11,16 +11,8 @@ const options = {
   },
 };
 export const HeroSlide = (props) => {
-  const {
-    imgSrc,
-    title,
-    description,
-    rate,
-    button,
-    beforeButton,
-    movieId,
-    
-  } = props;
+  const { imgSrc, title, description, rate, button, beforeButton, movieId } =
+    props;
   const [showTrailer, setShowTrailer] = useState(false);
   const [playTrailer, setPlayTrailer] = useState([]);
 
@@ -42,22 +34,25 @@ export const HeroSlide = (props) => {
 
   return (
     <>
-      <div className="w-[1440px] h-[600px] max-sm:w-[430px] overflow-hidden max-sm:overflow-auto max-sm:h-auto">
+      <div className="w-[1440px] h-[600px] max-sm:w-[430px] max-sm:h-[530px] overflow-hidden max-sm:overflow-auto ">
         <div className=" flex gap-5 relative max-sm:flex max-sm:flex-col">
           <img
             src={imgSrc}
             className="w-[1440px] h-[600px] absolute -z-1 max-sm:w-[430px] max-sm:h-[246px] max-sm:relative "
           />
-          <div className="max-sm:mt-[0] mt-[20px] ">
-            {beforeButton}
+          <div className="max-sm:h-[20px] max-sm:flex max-sm:justify-between max-sm:items-center max-sm:mt-30 max-sm:w-[430px] absolute">
+            <div className="max-sm:mt-0 mt-[320px] ">{beforeButton}</div>
+            <div className=" ml-[1400px] max-sm:ml-90 max-sm:mt-0">
+              {button}
+            </div>
           </div>
-          
-          <div className="flex justify-between w-[1350px]  max-sm:w-[430px] max-sm:h-[246px] max-sm:my-0 max-sm:ml-0  max-sm:flex max-sm:justify-center my-[170px] ml-[139px] absolute -z-1">
+
+          <div className="flex justify-between w-[1350px]  max-sm:w-[430px] max-sm:h-[246px] max-sm:my-0 max-sm:ml-0  max-sm:flex max-sm:justify-center my-[170px] ml-[139px] ">
             <div
               className="flex flex-col gap-[16px] absolute z-10"
               // style={{ zIndex: playTrailer === "" ? "-1" : "0" }}
             >
-              <div className="flex flex-col max-sm:flex-row max-sm:p-[10px] ">
+              <div className="flex flex-col max-sm:flex-row max-sm:w-[350px]  ">
                 <div className="max-sm:flex max-sm:flex-col">
                   <p className="text-[16px] text-white-600 max-sm:text-black max-sm:text-[14px]">
                     Now Playing:
@@ -78,7 +73,7 @@ export const HeroSlide = (props) => {
                   {description}
                 </p>
               </div>
-              <div className="mt-5">
+              <div className="mt-5 max-sm:mt-0">
                 <button
                   className="w-[145px] h-[40px] bg-white rounded-md gap-[8px] text-black  justify-center items-center flex hover:scale-[0.9] cursor-pointer"
                   onClick={handleClickButton}
@@ -87,7 +82,7 @@ export const HeroSlide = (props) => {
                   Watch trailer
                 </button>
               </div>
-              
+
               {showTrailer && (
                 <div
                   className="flex w-[100vh] h-[100vh] justify-center absolute -z-1"
@@ -95,8 +90,8 @@ export const HeroSlide = (props) => {
                     setShowTrailer(false);
                   }}
                 >
-                  <div className="w-[100vh] h-[100vh] mb-80 ml-50 ">
-                    <div className="absolute z-10 w-[697px] h-[401px] max-sm:[300px] max-sm:h-[250px]">
+                  <div className="w-[100vh] h-[100vh] mb-80 ml-50 max-sm:w-[430px] max-sm:mr-[1400px]">
+                    <div className="absolute z-10 w-[750px] h-[450px] max-sm:w-[430px] max-sm:h-[300px]  bg-white flex justify-center items-center">
                       <iframe
                         src={
                           playTrailer?.results?.length > 0
@@ -104,19 +99,17 @@ export const HeroSlide = (props) => {
                             : ""
                         }
                         allowFullScreen
-                        className="absolute z-10 w-[697px] h-[401px] max-sm:[300px] max-sm:h-[250px]"
+                        className="absolute z-10 w-[697px] h-[401px] max-sm:w-[300px] max-sm:h-[250px]"
                       ></iframe>
-                      <button className="w-[10px] h-[10px] bg-white rounded-full">
-                        x
-                      </button>
+                      <div className="flex ml-[200px] max-sm:ml-0">
+                        <button className="w-[10px] h-[10px] bg-black rounded-full">
+                          x
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
               )}
-            </div>
-            
-            <div className="mt-[120px] mb-[30px] max-sm:mt-[190px]">
-              {button}
             </div>
           </div>
         </div>
