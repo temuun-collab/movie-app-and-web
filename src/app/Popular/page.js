@@ -1,5 +1,4 @@
 "use client";
-import Home from "../page";
 import { Header } from "../_features/Header";
 import { MovieCard } from "../_component/MovieCard";
 import { useEffect, useState } from "react";
