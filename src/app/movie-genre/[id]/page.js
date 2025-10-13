@@ -2,7 +2,7 @@
 import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Genre } from "@/app/_component/Genre";
-import { Header } from "@/app/_features/Header";
+import { Header } from "@/app/_Features/Header";
 import { MovieCard } from "@/app/_component/MovieCard";
 import { FooterContent } from "@/app/_component/FooterContent";
 const apiLink = `https://api.themoviedb.org/3/genre/movie/list?language=en`;

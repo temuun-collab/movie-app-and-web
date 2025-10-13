@@ -1,7 +1,7 @@
 "use client";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Header } from "@/app/_features/Header";
+import { Header } from "@/app/_Features/Header";
 import { LoadingMovieMore } from "@/app/_component/LoadingMovieMore";
 import { MovieCard } from "@/app/_component/MovieCard";
 import { FooterContent } from "@/app/_component/FooterContent";
