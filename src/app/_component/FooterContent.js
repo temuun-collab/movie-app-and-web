@@ -1,5 +1,4 @@
 export const FooterContent = (props) => {
-  const { src, text, text1 } = props;
   return (
     <div className="w-[100vw] flex justify-center max-sm:w-[430px]">
       <div

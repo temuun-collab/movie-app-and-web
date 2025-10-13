@@ -1,4 +1,4 @@
-export const LoadingMovieMore = (props) => {
+export const LoadingMovieMore = () => {
   return (
     <div className="w-[100vw] h-[100vw] flex justify-center items-center">
       <div className="w-[100vw] flex flex-col gap-[10px] items-center h-[100vh] bg-white">

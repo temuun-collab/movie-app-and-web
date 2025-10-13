@@ -1,4 +1,4 @@
-export const LoadingMovieList = (props) => {
+export const LoadingMovieList = () => {
   return (
     <div
       className="w-[100vw] flex flex-col gap-[30px] items-center"
