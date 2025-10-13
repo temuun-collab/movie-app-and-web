@@ -171,7 +171,7 @@ export default function MovieDetail() {
           </div>
           <div className="w-[100vw] flex justify-center mt-10 max-sm:w-[430px] max-sm:flex max-sm:justify-center">
             <div className="flex w-[1080px] gap-2 flex-col">
-              <div className="max-sm:flex max-sm:flex-row max-sm:gap-10">
+              <div className="max-sm:flex max-sm:flex-row max-sm:gap-10 max-sm:w-[430px] max-sm:items-center max-sm:justify-center ">
                 <img
                   src={`https://image.tmdb.org/t/p/original/${movieDetail.poster_path}`}
                   className=" rounded-3 max-sm:w-[100px] max-sm:h-[148px] lg:hidden"
