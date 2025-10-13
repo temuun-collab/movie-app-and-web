@@ -18,7 +18,7 @@ export const HeaderGenreDropdown = (props) => {
   const [searchValue, setSearchValue] = useState("");
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
-  // const [search , setSearch] = useState(false)
+
   const apiLinkSearchMovieMore = `https://api.themoviedb.org/3/search/movie?query=${searchValue}&language=en-US&page=1`;
   const activeButtonGenre = () => {
     setGenre(!genre);
@@ -31,9 +31,7 @@ export const HeaderGenreDropdown = (props) => {
   const handleInputValue = (e) => {
     setSearchValue(e.target.value);
   };
-  // const handleClickButton = () => {
-  //   setSearch(!search);
-  // };
+
   const getData = async () => {
     const data = await fetch(apiLink, options);
     const jsonData = await data.json();
@@ -89,7 +87,6 @@ export const HeaderGenreDropdown = (props) => {
         </div>
       )}
       {searchValue.length > 0 && (
-        // <div className=" max-sm:w-[430px] max-sm:h-100vh max-sm:flex max-sm:mt-5">
         <div className="w-[557px] flex-col flex m-8  absolute bg-white z-10 mt-10  border-gray-100 rounded-md overflow-y-scroll max-h-[600px] max-sm:w-[335px] max-sm:h-[729px] max-sm:mr-15">
           {searchList.map((movie, index) => {
             if (loading) {
@@ -164,7 +161,7 @@ export const HeaderGenreDropdown = (props) => {
                 className="w-[212px] h-[40px] bg-white flex justify-center items-center text-black "
                 onClick={handleMovieClick}
               >
-                See all results for "{searchValue}"
+                See all results for {searchValue}
               </button>
             </div>
           )}
