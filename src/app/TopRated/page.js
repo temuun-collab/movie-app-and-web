@@ -1,6 +1,6 @@
 "use client";
 
-import { Header } from "../_features/Header";
+import { Header } from "../_Features/Header";
 import { MovieCard } from "../_component/MovieCard";
 import { useEffect, useState } from "react";
 import { FooterContent } from "../_component/FooterContent";
