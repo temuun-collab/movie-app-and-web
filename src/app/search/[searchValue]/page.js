@@ -65,12 +65,12 @@ export default function Page() {
     <div className="bg-white w-[100vw] flex flex-col gap-5 items-center max-sm:w-[100vw] max-sm:flex">
       <Header />
       <div className="flex justify-between w-[1280px] h-[36px] max-sm:w-[430px]">
-        <p className="text-[24px] text-black 0">Search results</p>
+        <p className="text-[24px] text-black max-sm:ml-10 ">Search results</p>
       </div>
       <div className="w-[1280px] flex flex-row gap-10 max-sm:w-[430px] max-sm:flex max-sm:flex-col max-sm:items-center">
         <div className="flex flex-col max-sm:w-[430px] max-sm:flex max-sm:flex-col max-sm:items-center">
           {searchList && (
-            <div className="flex flex-col w-[806px]  max-sm:w-[400px] text-black text-[20px] font-bold">
+            <div className="flex flex-col w-[806px]  max-sm:w-[400px] text-black text-[20px] font-bold max-sm:ml-10">
               {totalResult} results for {searchValue}
             </div>
           )}
@@ -141,9 +141,9 @@ export default function Page() {
         <div className="border-l-2 border-gray-100 h-250 max-sm:hidden"></div>
         <div className="w-[329px] h-[352px] mr-3 max-sm:w-[430px] max-sm:h-[270px] max-sm:flex max-sm:flex-col  max-sm:justify-center">
           <div className="flex flex-col">
-            <div className="w-[213px] h-[60px]">
-              <h3 className="text-[24px] text-black">Genres</h3>
-              <p className="text-[16px] text-black">
+            <div className="w-[313px] h-[60px]">
+              <h3 className="text-[24px] text-black max-sm:ml-10">Genres</h3>
+              <p className="text-[16px] text-black max-sm:ml-10">
                 See lists of movies by genre
               </p>
             </div>

@@ -53,17 +53,19 @@ export const HeaderGenreDropdown = (props) => {
   }, [searchValue]);
 
   return (
-    <div className="flex gap-[12px] relative">
+    <div className="flex gap-[12px] relative max-sm:gap-2">
       <button
         onClick={activeButtonGenre}
-        className="w-[97px] h-[36px] rounded-md border-1 g-[8px] bg-white flex gap-[8px] justify-center items-center max-sm:hidden cursor-pointer"
+        className="w-[97px] h-[36px] rounded-md border-1 g-[8px] bg-white flex gap-[8px] justify-center items-center cursor-pointer max-sm:w-[36px] max-sm:h-[36px]"
       >
         <img className="w-[8px] h-[4px]" src="/logo1.png" />
-        <p className="w-[41px] h-[20px] text-[14px] text-black ">Genre</p>
+        <p className="w-[41px] h-[20px] text-[14px] text-black max-sm:hidden ">
+          Genre
+        </p>
       </button>
       {genre && (
         <div
-          className="absolute mt-10 w-[577px] h-auto bg-white border border-gray-100 rounded-md shadow-lg z-50 max-sm:w-[335px] max-sm:h-[513px] "
+          className="absolute mt-10 w-[577px] h-auto bg-white border border-gray-100 rounded-md shadow-lg z-50 max-sm:w-[335px] max-sm:auto "
           onClick={() => {
             setGenre(false);
           }}
@@ -169,7 +171,7 @@ export const HeaderGenreDropdown = (props) => {
         // </div>
       )}
       <div
-        className="w-[379px] h-[36px] flex gap-[10px] rounded-md border-1 border-gray-200  items-center  max-sm:w-[260px] max-sm:h-[35px] max-sm:flex max-sm:justify-between"
+        className="w-[379px] h-[36px] flex gap-[10px] rounded-md border-1 border-gray-200  items-center  max-sm:w-[220px] max-sm:h-[35px] max-sm:flex max-sm:justify-between"
         style={{ paddingLeft: "5px" }}
       >
         <img
@@ -179,7 +181,7 @@ export const HeaderGenreDropdown = (props) => {
         />
 
         <input
-          className="w-[350px] h-[36px] g-[10px] text-black max-sm:w-[260px] max-sm:h-[35px]"
+          className="w-[350px] h-[36px] g-[10px] text-black max-sm:w-[220px] max-sm:h-[35px]"
           placeholder="Search.."
           onChange={handleInputValue}
           value={searchValue}

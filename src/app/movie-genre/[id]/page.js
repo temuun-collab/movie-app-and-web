@@ -65,14 +65,14 @@ export default function MovieGenre(props) {
     <div className="bg-white w-[100vw] flex flex-col gap-5 items-center">
       <Header />
       <div className="flex justify-between w-[1280px] h-[36px] max-sm:w-[430px]">
-        <p className="text-[24px] text-black 0">Search Filter</p>
+        <p className="text-[24px] text-black max-sm:ml-10">Search Filter</p>
       </div>
       <div className="w-[1280px] flex flex-row max-sm:w-[430px] max-sm:flex max-sm:flex-col">
-        <div className="w-[387px] h-[352px] mr-3">
+        <div className="w-[387px] h-[352px] mr-3 ">
           <div className="flex flex-col">
-            <div className="w-[213px] h-[60px]">
-              <h3 className="text-[24px] text-black">Genres</h3>
-              <p className="text-[16px] text-black">
+            <div className="w-[320px] h-[60px]">
+              <h3 className="text-[24px] text-black max-sm:ml-10">Genres</h3>
+              <p className="text-[16px] text-black max-sm:ml-10">
                 See lists of movies by genre
               </p>
             </div>
