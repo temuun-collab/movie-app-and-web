@@ -127,17 +127,20 @@ export default function MovieDetail() {
           </div>
           {showTrailer && (
             <div
-              className="flex w-[100vw] h-[100vh] justify-center items-center absolute"
+              className="flex w-[100vw] h-[100vh] justify-center items-center z-10 absolute max-sm:absolute max-sm:z-10"
               onClick={() => {
                 setShowTrailer(false);
               }}
             >
-              <div className="w-[997px] h-[651px] mb-80 max-sm:w-[375px] max-sm:h-[375px] max-sm:mb-[150px]">
+              <div className="w-[997px] h-[651px] mb-80 max-sm:w-[385px] max-sm:h-[100vh] max-sm:mb-60  max-sm:flex max-sm:justify-start flex justify-start">
                 <iframe
                   src={`https://www.youtube.com/embed/${playTrailer.results[0]?.key}`}
                   allowFullScreen
-                  className="absolute z-10 w-[997px] h-[651px] max-sm:w-[375px] max-sm:h-[375px]"
+                  className=" w-[997px] h-[651px] max-sm:w-[375px] max-sm:h-[375px]"
                 ></iframe>
+                <button className="max-sm:w-[25px] max-sm:h-[25px] max-sm:mr-10 max-sm:bg-white max-sm:rounded-full max-sm:text-black max-sm:cursor-pointer w-[35px] h-[35px] bg-white rounded-full text-black cursor-pointer opacity-55">
+                  x
+                </button>
               </div>
             </div>
           )}
@@ -154,7 +157,7 @@ export default function MovieDetail() {
                   className="w-[760px] h-[428px] rounded-3 absolute  max-sm:w-[430px] max-sm:h-[211px]"
                 />
                 <div
-                  className=" absolute z-10 flex gap-5 mt-90 ml-10 max-sm:absolute max-sm:z-10 "
+                  className=" absolute z-10 flex gap-5 mt-90 ml-10 max-sm:absolute max-sm:z-10 max-sm:mt-40"
                   style={{ zIndex: playTrailer === "" ? "-1" : "0" }}
                 >
                   <button

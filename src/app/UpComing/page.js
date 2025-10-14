@@ -55,7 +55,7 @@ export default function UpComing() {
         style={{ paddingTop: "40px" }}
       >
         <div className="flex justify-between w-[1277px] h-[36px] max-sm:w-[430px]">
-          <p className="text-[24px] text-black 0">Upcoming</p>
+          <p className="text-[24px] text-black max-sm:ml-10">Upcoming</p>
         </div>
         <div className="flex flex-col gap-[30px] max-sm:w-[430px] max-sm:flex max-sm:flex-col max-sm:items-center">
           <div className=" w-[1277px] gap-[30px]  grid grid-cols-5 max-sm:w-[335px] max-sm:grid max-sm:grid-cols-2">
@@ -112,7 +112,10 @@ export default function UpComing() {
               }}
             >
               Next
-              <img src="/paginationNextVector.png" className="w-[4px] h-[8px]" />
+              <img
+                src="/paginationNextVector.png"
+                className="w-[4px] h-[8px]"
+              />
             </button>
           </div>
         </div>
