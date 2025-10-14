@@ -63,7 +63,7 @@ export const HeaderGenreDropdown = (props) => {
       </button>
       {genre && (
         <div
-          className="absolute mt-10 w-[577px] h-[333px] bg-white border border-gray-100 rounded-md shadow-lg z-50 max-sm:w-[335px] max-sm:h-[513px] "
+          className="absolute mt-10 w-[577px] h-auto bg-white border border-gray-100 rounded-md shadow-lg z-50 max-sm:w-[335px] max-sm:h-[513px] "
           onClick={() => {
             setGenre(false);
           }}
@@ -87,7 +87,7 @@ export const HeaderGenreDropdown = (props) => {
         </div>
       )}
       {searchValue.length > 0 && (
-        <div className="w-[557px] flex-col flex m-8  absolute bg-white z-10 mt-10  border-gray-100 rounded-md overflow-y-scroll max-h-[600px] max-sm:w-[335px] max-sm:h-[729px] max-sm:mr-15">
+        <div className="w-[557px] flex-col flex m-8  absolute bg-white z-10 mt-10  border-gray-100 rounded-md overflow-y-scroll cursor-pointer max-h-[600px] max-sm:w-[335px] max-sm:h-[729px] max-sm:mr-15">
           {searchList.map((movie, index) => {
             if (loading) {
               return (

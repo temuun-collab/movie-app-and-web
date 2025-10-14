@@ -136,7 +136,7 @@ export default function MovieDetail() {
                 <iframe
                   src={`https://www.youtube.com/embed/${playTrailer.results[0]?.key}`}
                   allowFullScreen
-                  className="absolute z-10  max-sm:w-[375px] max-sm:h-[375px] "
+                  className="absolute z-10 w-[997px] h-[651px] max-sm:w-[375px] max-sm:h-[375px]"
                 ></iframe>
               </div>
             </div>

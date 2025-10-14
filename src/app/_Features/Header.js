@@ -18,7 +18,7 @@ export const Header = (props) => {
             <h1 className="text-indigo-700 text-[16px] font-inter">Movie Z</h1>
           </div>
           <HeaderGenreDropdown />
-          <button className="w-[36px] h-[36px] flex justify-center items-center rounded-md border-1 max-sm: none">
+          <button className="w-[36px] h-[36px] flex justify-center items-center rounded-md border-1 max-sm: none cursor-pointer">
             <img className="w-[12px] h-[12px]" src="/logo3.png" />
           </button>
         </div>

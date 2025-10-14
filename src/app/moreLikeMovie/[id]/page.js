@@ -86,25 +86,25 @@ export default function MoreLikeMovie(props) {
       </div>
       <div className="mt-5 mb-5">
         <div className="w-[1280px] h-[40px] flex justify-end">
-          <div className="w-[382px] h-[40px] flex flex-row gap-[3px]">
+          <div className="w-[400px] h-[40px] flex flex-row ">
             <button
-              className="w-[114px] h-[40px] flex justify-center items-center text-[#09090B] rounded-md cursor-pointer"
+              className="w-[150px] h-[40px] flex justify-center items-center text-[#09090B] gap-3 rounded-md cursor-pointer"
               onClick={handleBeforePage}
               style={{
-                border: isBackClick ? "1px solid black" : "none",
+                border: isBackClick ? "1px solid gray-100" : "none",
                 color: isBackClick ? "black" : "gray",
               }}
             >
-              <img src="./paginationVector" className="w-[5px] h-[5px]" />
+              <img src="/paginationVector.png" className="w-[4px] h-[8px]" />
               Previous
             </button>
-            <div className="w-[172px] h-[40px] flex flex-row gap-[3px]">
+            <div className="w-[150px] h-[40px] flex flex-row gap-[3px]">
               <button>{page - 1}</button>
               <button
                 className="border-1 w-10 rounded-sm text-black"
                 style={{
-                  borderColor: isBackClick ? "black" : "none",
-                  borderColor: isNextClick ? "black" : "none",
+                  borderColor: isBackClick ? "gray" : "none",
+                  borderColor: isNextClick ? "gray" : "none",
                 }}
               >
                 {page}
@@ -114,15 +114,15 @@ export default function MoreLikeMovie(props) {
               <button>{totalPage}</button>
             </div>
             <button
-              className="w-[88px] h-[40px] flex justify-center items-center text-black cursor-pointer rounded-md"
+              className=" h-[40px] flex justify-center gap-3 items-center text-black cursor-pointer rounded-md"
               onClick={handleAddpage}
               style={{
-                border: isNextClick ? "1px solid black" : "none",
+                border: isNextClick ? "1px solid gray-100" : "none",
                 color: isNextClick ? "black" : "gray",
               }}
             >
               Next
-              <img src="./paginationNextVector" className="w-[5px] h-[5px]" />
+              <img src="/paginationNextVector.png" className="w-[4px] h-[8px]" />
             </button>
           </div>
         </div>

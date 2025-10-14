@@ -38,8 +38,35 @@ export const HeroSlide = (props) => {
         <div className=" flex gap-5 relative max-sm:flex max-sm:flex-col">
           <img
             src={imgSrc}
-            className="w-[1440px] h-[600px] absolute -z-1 max-sm:w-[430px] max-sm:h-[246px] max-sm:relative "
+            className="w-[1440px] h-[600px] absolute max-sm:w-[430px] max-sm:h-[246px] max-sm:relative "
           />
+           {showTrailer && (
+                <div
+                  className="flex w-[100vw] h-[100vw] absolute ml-60 mt-10 max-sm:w-[430px] max-sm:mr-[1400px]"
+                    onClick={() => {
+                    setShowTrailer(false);
+                  }}
+                 
+                >
+                  <div className="w-[997px] h-[651px] mb-80 max-sm:w-[375px] max-sm:h-[375px] max-sm:mb-[150px]">
+                     <iframe
+                        src={
+                          playTrailer?.results?.length > 0
+                            ? `https://www.youtube.com/embed/${playTrailer.results[0]?.key}`
+                            : ""
+                        }
+                        allowFullScreen
+                        className="absolute z-10 w-[997px] h-[551px] max-sm:w-[300px] max-sm:h-[250px]"
+                      ></iframe>
+                      
+
+                  </div>
+                    
+                     
+                    
+                  
+                </div>
+              )}
           <div className="max-sm:h-[20px] max-sm:flex max-sm:justify-between max-sm:items-center max-sm:mt-30 max-sm:w-[430px] absolute">
             <div className="max-sm:mt-0 mt-[320px] ">{beforeButton}</div>
             <div className=" ml-[1400px] max-sm:ml-90 max-sm:mt-0">
@@ -47,10 +74,10 @@ export const HeroSlide = (props) => {
             </div>
           </div>
 
-          <div className="flex justify-between w-[1350px]  max-sm:w-[430px] max-sm:h-[246px] max-sm:my-0 max-sm:ml-0  max-sm:flex max-sm:justify-center my-[170px] ml-[139px] ">
+          <div className="flex  absolute z-10 justify-between w-[1350px]  max-sm:w-[430px] max-sm:h-[246px] max-sm:my-0 max-sm:ml-0  max-sm:flex max-sm:justify-center my-[170px] ml-[139px] ">
             <div
               className="flex flex-col gap-[16px] absolute z-10"
-              // style={{ zIndex: playTrailer === "" ? "-1" : "0" }}
+              style={{ zIndex: playTrailer === "" ? "-1" : "0" }}
             >
               <div className="flex flex-col max-sm:flex-row max-sm:w-[350px]  ">
                 <div className="max-sm:flex max-sm:flex-col">
@@ -83,33 +110,7 @@ export const HeroSlide = (props) => {
                 </button>
               </div>
 
-              {showTrailer && (
-                <div
-                  className="flex w-[100vh] h-[100vh] justify-center absolute -z-1"
-                  onClick={() => {
-                    setShowTrailer(false);
-                  }}
-                >
-                  <div className="w-[100vh] h-[100vh] mb-80 ml-50 max-sm:w-[430px] max-sm:mr-[1400px]">
-                    <div className="absolute z-10 w-[750px] h-[450px] max-sm:w-[430px] max-sm:h-[300px]  bg-white flex justify-center items-center">
-                      <iframe
-                        src={
-                          playTrailer?.results?.length > 0
-                            ? `https://www.youtube.com/embed/${playTrailer.results[0]?.key}`
-                            : ""
-                        }
-                        allowFullScreen
-                        className="absolute z-10 w-[697px] h-[401px] max-sm:w-[300px] max-sm:h-[250px]"
-                      ></iframe>
-                      <div className="flex ml-[200px] max-sm:ml-0">
-                        <button className="w-[10px] h-[10px] bg-black rounded-full">
-                          x
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
+             
             </div>
           </div>
         </div>
