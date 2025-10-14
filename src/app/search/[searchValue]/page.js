@@ -68,7 +68,7 @@ export default function Page() {
         <p className="text-[24px] text-black max-sm:ml-10 ">Search results</p>
       </div>
       <div className="w-[1280px] flex flex-row gap-10 max-sm:w-[430px] max-sm:flex max-sm:flex-col max-sm:items-center">
-        <div className="flex flex-col max-sm:w-[430px] max-sm:flex max-sm:flex-col max-sm:items-center">
+        <div className="flex flex-col max-sm:w-[430px] max-sm:flex max-sm:flex-col max-sm:items-center gap-5">
           {searchList && (
             <div className="flex flex-col w-[806px]  max-sm:w-[400px] text-black text-[20px] font-bold max-sm:ml-10">
               {totalResult} results for {searchValue}

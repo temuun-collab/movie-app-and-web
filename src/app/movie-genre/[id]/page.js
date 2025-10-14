@@ -86,7 +86,7 @@ export default function MovieGenre(props) {
           </div>
         </div>
         <div className="border-l-2 border-gray-100 h-250 w-3 max-sm:hidden"></div>
-        <div className="flex flex-col max-sm:w-[430px] max-sm:flex max-sm:flex-col max-sm:items-center">
+        <div className="flex flex-col max-sm:w-[430px] max-sm:flex max-sm:flex-col max-sm:items-center gap-5">
           {genres && (
             <div className="flex flex-col w-[806px]  max-sm:w-[400px] text-black text-[20px] font-bold">
               {totalResult} titles in {genreName[0]?.name}
