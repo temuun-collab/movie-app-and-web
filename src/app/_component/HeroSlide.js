@@ -42,12 +42,12 @@ export const HeroSlide = (props) => {
           />
           {showTrailer && (
             <div
-              className="flex w-[100vw] h-[100vw] ml-60 mt-10 max-sm:w-0 max-sm:h-0 max-sm:ml-5 max-sm:mt-0"
+              className="flex  ml-60 mt-10 max-sm:w-0 max-sm:h-0 max-sm:ml-5 max-sm:mt-0"
               onClick={() => {
                 setShowTrailer(false);
               }}
             >
-              <div className="w-[997px] h-[651px] mb-80 max-sm:w-[435px] max-sm:z-10 max-sm:h-[400px] max-sm:flex max-sm:justify-start  ">
+              <div className="mb-80 max-sm:w-[435px] max-sm:z-10 max-sm:h-[400px] max-sm:flex max-sm:justify-start flex justify-start z-10 absolute">
                 <iframe
                   src={
                     playTrailer?.results?.length > 0
@@ -57,7 +57,7 @@ export const HeroSlide = (props) => {
                   allowFullScreen
                   className=" w-[997px] h-[551px] max-sm:w-[380px] max-sm:h-[265px]"
                 ></iframe>
-                <button className="max-sm:w-[25px] max-sm:h-[25px] max-sm:bg-white max-sm:rounded-full max-sm:text-black max-sm:cursor-pointer max-sm:hover:opacity-55">
+                <button className="max-sm:w-[25px] max-sm:h-[25px] max-sm:bg-white max-sm:rounded-full max-sm:text-black max-sm:cursor-pointer max-sm:hover:opacity-55 w-[35px] h-[35px] bg-white rounded-full text-black cursor-pointer opacity-55">
                   x
                 </button>
               </div>
@@ -107,7 +107,7 @@ export const HeroSlide = (props) => {
                   />
                   <img
                     src="./trailer1.png"
-                    className="max-sm:w-[9px] max-sm:h-[12px]"
+                    className="max-sm:w-[9px] max-sm:h-[12px] hidden"
                   />
                   Watch trailer
                 </button>

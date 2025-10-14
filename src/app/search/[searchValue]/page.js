@@ -71,7 +71,7 @@ export default function Page() {
         <div className="flex flex-col max-sm:w-[430px] max-sm:flex max-sm:flex-col max-sm:items-center">
           {searchList && (
             <div className="flex flex-col w-[806px]  max-sm:w-[400px] text-black text-[20px] font-bold">
-              {totalResult}results for {searchValue}
+              {totalResult} results for {searchValue}
             </div>
           )}
           <div className="gap-5 grid grid-cols-4 w-[910px] max-sm:w-[350px] max-sm:grid max-sm:grid-cols-2">
