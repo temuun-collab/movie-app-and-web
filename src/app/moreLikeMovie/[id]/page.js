@@ -65,11 +65,11 @@ export default function MoreLikeMovie(props) {
         className="w-[100vw] flex flex-col gap-[30px] items-center"
         style={{ paddingTop: "40px" }}
       >
-        <div className="flex justify-between w-[1277px] h-[36px]">
-          <p className="text-[24px] text-black 0">More like this</p>
+        <div className="flex justify-between w-[1277px] h-[36px] max-sm:w-[430px]">
+          <p className="text-[24px] text-black max-sm:ml-10">More like this</p>
         </div>
-        <div className="flex flex-col gap-[30px]">
-          <div className=" w-[1277px] gap-[30px]  grid grid-cols-5">
+        <div className="flex flex-col gap-[30px] max-sm:w-[430px] max-sm:flex max-sm:flex-col max-sm:items-center">
+          <div className=" w-[1277px] gap-[30px]  grid grid-cols-5  max-sm:w-[335px] max-sm:grid max-sm:grid-cols-2">
             {moreLikeMovie?.slice(0, 10).map((movie, index) => {
               return (
                 <MovieCard
@@ -85,7 +85,7 @@ export default function MoreLikeMovie(props) {
         </div>
       </div>
       <div className="mt-5 mb-5">
-        <div className="w-[1280px] h-[40px] flex justify-end">
+        <div className="w-[1280px] h-[40px] flex justify-end max-sm:w-[430px] max-sm:flex max-sm:justify-end">
           <div className="w-[400px] h-[40px] flex flex-row ">
             <button
               className="w-[150px] h-[40px] flex justify-center items-center text-[#09090B] gap-3 rounded-md cursor-pointer"
@@ -122,7 +122,10 @@ export default function MoreLikeMovie(props) {
               }}
             >
               Next
-              <img src="/paginationNextVector.png" className="w-[4px] h-[8px]" />
+              <img
+                src="/paginationNextVector.png"
+                className="w-[4px] h-[8px]"
+              />
             </button>
           </div>
         </div>
