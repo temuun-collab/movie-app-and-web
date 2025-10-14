@@ -92,17 +92,20 @@ export default function Page() {
             <div className="w-[806px] h-[40px] flex justify-end max-sm:w-[430px] max-sm:h-[20px] max-sm:flex max-sm:justify-end">
               <div className="w-[400px] h-[40px] flex flex-row">
                 <button
-                  className="w-[150px] h-[40px] gap-[3px] flex justify-center items-center text-[#09090B] rounded-md"
+                  className="w-[160px] h-[40px] gap-3 flex justify-center items-center text-[#09090B] rounded-md"
                   onClick={handleBeforePage}
                   style={{
                     border: isBackClick ? "1px solid gray-100" : "none",
                     color: isBackClick ? "black" : "gray",
                   }}
                 >
-                  <img src="/paginationVector.png" className="w-[4px] h-[8px]" />
+                  <img
+                    src="/paginationVector.png"
+                    className="w-[4px] h-[8px]"
+                  />
                   Previous
                 </button>
-                <div className="w-[130px] h-[40px] flex flex-row gap-[3px]">
+                <div className="w-[135px] h-[40px] flex flex-row gap-[3px]">
                   <button>{page - 1}</button>
                   <button
                     className="border-1 w-10 rounded-sm text-black"
@@ -118,7 +121,7 @@ export default function Page() {
                   <button>{totalPage}</button>
                 </div>
                 <button
-                  className="w-[88px] h-[40px] gap-[3px] flex justify-center items-center rounded-md"
+                  className="w-[88px] h-[40px] gap-3 flex justify-center items-center rounded-md"
                   onClick={handleAddpage}
                   style={{
                     border: isNextClick ? "1px solid gray-100" : "none",

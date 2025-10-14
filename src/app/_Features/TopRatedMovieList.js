@@ -38,7 +38,7 @@ export const TopRatedMovieList = (props) => {
       <div className="flex justify-between w-[1277px] h-[36px] max-sm:w-[400px]">
         <p className="text-[24px] text-black 0">Top Rated</p>
         <Link href="/TopRated">
-          <button className="w-[120px] h-[36px] text-black flex justify-center items-center hover:opacity-85 cursor-pointer">
+          <button className="w-[120px] h-[36px] text-black flex justify-center items-center hover:opacity-85 cursor-pointer gap-1">
             See more
             <img src="./vector.png" className="w-[9px] h-[9px]" />
           </button>
