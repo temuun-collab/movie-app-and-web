@@ -29,7 +29,7 @@ export default function Home() {
     getData();
   }, []);
   return (
-    <div className="gap-[10px] bg-white ">
+    <div className="gap-[12px] bg-white ">
       <Header />
       <HeroSection />
       <UpcomingMovieList />
